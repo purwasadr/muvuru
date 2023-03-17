@@ -69,8 +69,8 @@ const TopMoviesSection = ({ trending }: Props) => {
     <section className="relative z-30">
       <h2 className="text-center font-medium text-3xl">Trending</h2>
       <div className="flex space-x-2 justify-start mt-10">
-        <Button onClick={(e) => carouselRef.current?.previous(2)}><ChevronLeft className="h-5 w-5"/></Button>
-        <Button onClick={(e) => carouselRef.current?.next(2)} ><ChevronRight className="h-5 w-5"/></Button>
+        <Button fullRounded={false} onClick={(e) => carouselRef.current?.previous(2)}><ChevronLeft className="h-5 w-5"/></Button>
+        <Button fullRounded={false} onClick={(e) => carouselRef.current?.next(2)} ><ChevronRight className="h-5 w-5"/></Button>
       </div>
       <div className="overflow-hidden">
       <Carousel

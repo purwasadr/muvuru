@@ -30,7 +30,7 @@ const HeroSection = ({ popularMovies }: Props) => {
               fill
               alt={movie.title ?? ''}
             />
-            <div className="relative flex flex-col justify-end items-center z-20 mb-10 w-full">
+            <div className="relative flex flex-col justify-end items-center z-20 mb-10 w-full page-padding-x">
               <h1 className="text-center">{movie.title + ' (' + new Date(movie.release_date ?? '').getFullYear()  +  ')'}</h1>
               <div className="flex space-x-3 mt-3 items-center">
                 <ScoreShow score={movie.vote_average ?? 0} />

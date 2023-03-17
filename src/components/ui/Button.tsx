@@ -6,34 +6,35 @@ interface Props
     VariantProps<typeof buttonStyles> {}
 
 const buttonStyles = cva(
-  'shadow-sm font-medium focus:outline-none disabled:pointer-events-none',
+  'block shadow-sm font-medium focus:outline-none disabled:pointer-events-none',
   {
     variants: {
       intent: {
         primary: [
           'text-white',
           'bg-red-700 hover:bg-red-800',
-          'focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2',
         ],
-        secondary: [
-          'border border-gray-300 bg-white text-gray-700',
-          'hover:bg-gray-50',
-          'focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2',
-          'dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700',
+        text: [
+          'bg-transparent text-red-700',
         ],
       },
       size: {
-        small: 'rounded-md text-xs px-3 py-2',
-        base: 'rounded-md text-sm px-4 py-2',
-        large: 'rounded-md text-base px-5 py-2',
+        small: 'text-xs px-3 py-2',
+        base: 'text-sm px-4 py-2',
+        large: 'text-base px-5 py-2.5',
       },
       fullWidth: {
         true: 'w-full',
       },
+      fullRounded: {
+        true: 'rounded-full',
+        false: 'rounded-md'
+      }
     },
     defaultVariants: {
       intent: 'primary',
       size: 'base',
+      fullRounded: true
     },
   }
 );
@@ -44,11 +45,12 @@ const Button = ({
   fullWidth,
   size,
   intent,
+  fullRounded,
   ...props
 }: Props) => {
   return (
     <button
-      className={cn(buttonStyles({ fullWidth, size, intent }), className)}
+      className={cn(buttonStyles({ fullWidth, size, intent, fullRounded }), className)}
       {...props}
     >
       {children}

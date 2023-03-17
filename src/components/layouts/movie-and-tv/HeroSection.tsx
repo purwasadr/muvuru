@@ -1,6 +1,4 @@
 import { getImageUrl } from '@/constants';
-import { Movie, Tv } from '@/types';
-import { isMovie, isTv } from '@/utils/typeguard';
 import Image from 'next/image';
 
 interface Props {

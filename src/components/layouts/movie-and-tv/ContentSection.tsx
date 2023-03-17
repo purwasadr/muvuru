@@ -76,7 +76,7 @@ const ContentSection = ({ showDetail, showCredit }: Props) => {
             <CardCredit key={cast.id} credit={cast} />
           ))}
         </ul>
-        <p className="mt-4 text-sm text-red-700 text-center cursor-pointer">View All</p>
+        <Button className="mx-auto" intent="text">View All</Button>
       </div>
     </section>
   );
