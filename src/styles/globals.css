@@ -40,6 +40,10 @@
   .carousel-container {
     @apply w-[1536px];
   }
+
+  .page-padding-x {
+    @apply px-4 md:px-10;
+  }
 }
 
 @layer utilities {

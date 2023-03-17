@@ -1,10 +1,9 @@
+import cn from '@/utils';
 import { cva, VariantProps } from 'class-variance-authority';
-import { twMerge } from 'tailwind-merge';
 
-interface Props extends React.ComponentProps<'button'> {}
-// interface Props
-//   extends React.ComponentProps<'button'>,
-//     VariantProps<typeof buttonStyles> {}
+interface Props
+  extends React.ComponentProps<'button'>,
+    VariantProps<typeof buttonStyles> {}
 
 const buttonStyles = cva(
   'shadow-sm font-medium focus:outline-none disabled:pointer-events-none',
@@ -13,9 +12,8 @@ const buttonStyles = cva(
       intent: {
         primary: [
           'text-white',
-          'bg-indigo-600 hover:bg-indigo-700',
+          'bg-red-700 hover:bg-red-800',
           'focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2',
-          'dark:bg-indigo-600 dark:hover:bg-indigo-700 dark:focus:ring-indigo-800',
         ],
         secondary: [
           'border border-gray-300 bg-white text-gray-700',
@@ -40,13 +38,17 @@ const buttonStyles = cva(
   }
 );
 
-const Button = ({ className, children, ...props }: Props) => {
+const Button = ({
+  className,
+  children,
+  fullWidth,
+  size,
+  intent,
+  ...props
+}: Props) => {
   return (
     <button
-      className={twMerge(
-        `bg-red-700 hover:bg-red-800 text-white rounded-md text-sm px-4 py-2 shadow-sm focus:outline-none disabled:pointer-events-none`,
-        className
-      )}
+      className={cn(buttonStyles({ fullWidth, size, intent }), className)}
       {...props}
     >
       {children}

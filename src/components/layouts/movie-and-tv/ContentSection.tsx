@@ -64,7 +64,7 @@ const ContentSection = ({ showDetail, showCredit }: Props) => {
             <p>{`${showDetail.number_of_seasons} Seasons`}</p>
           </div>
         )}
-        <Button className="mt-5 rounded-full py-3 text-base px-7">Watch Trailer</Button>
+        <Button className="rounded-full mt-5" size={'large'}>Watch Trailer</Button>
         <p className="mt-5 text-sm leading-relaxed text-secondary">{showDetail.overview}</p>
         <DetailsSection showDetail={showDetail} />
       </div>

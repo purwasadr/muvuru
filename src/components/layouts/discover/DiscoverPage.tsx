@@ -19,7 +19,7 @@ const DiscoverPage = ({showDiscover, prefixPath}: Props) => {
   const page = Number.parseInt(isString(router.query.page) ?? '1');
 
   return (
-    <div className="mx-auto container px-6 md:px-10 mt-[68px]">
+    <div className="mx-auto container page-padding-x mt-[68px]">
       <SortAndFilterSection prefixPath={prefixPath} />
       <ul className="py-4 grid grid-cols-[repeat(auto-fit,minmax(0,180px))] gap-x-3 gap-y-5 place-content-center sm:place-content-between">
         {showDiscover?.results?.map((show) => (
