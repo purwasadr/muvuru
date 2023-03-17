@@ -1,6 +1,7 @@
 import ContentSection from '@/components/layouts/movie-and-tv/ContentSection';
 import HeroSection from '@/components/layouts/movie-and-tv/HeroSection';
 import { ShowCredit, ShowDetail } from '@/types';
+import Head from 'next/head';
 
 interface Props {
   showDetail?: ShowDetail;
@@ -17,8 +18,11 @@ const DetailPage = ({ showDetail, showCredit }: Props) => {
 
   return (
     <div className={`[&>*]:mx-auto `}>
+      <Head>
+        <title>{showDetail?.title ?? 'Muvuru'}</title>
+      </Head>
       <HeroSection backdropPath={showDetail.backdrop_path} alt={showDetail.title} />
-      <div className="container px-6 md:px-10">
+      <div className="container page-padding-x">
 
         <ContentSection showDetail={showDetail} showCredit={showCredit}/>
       </div>

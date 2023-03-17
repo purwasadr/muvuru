@@ -34,7 +34,7 @@ const Navbar = () => {
         isNavBgDark ? 'bg-slate-900/50 backdrop-blur' : 'bg-transparent'
       }`}
     >
-      <div className="flex justify-between items-center container px-6 md:px-10 py-5 w-full">
+      <div className="flex justify-between items-center container page-padding-x py-5 w-full">
         <p className="text-xl font-medium text-white uppercase">Muvuru</p>
         <div className="max-md:hidden">
           <li className="flex space-x-7">
@@ -58,7 +58,7 @@ const Navbar = () => {
             ))}
           </li>
         </div>
-        <div className="md:hidden">
+        <div className="flex items-center md:hidden">
           <Sidebar />
         </div>
       </div>

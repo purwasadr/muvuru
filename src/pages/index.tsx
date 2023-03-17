@@ -13,7 +13,7 @@ export default function Home({
   return (
     <div className={`[&>*]:mx-auto`}>
       <HeroSection popularMovies={popularMovies} />
-      <div className="mt-10 container px-6 md:px-10 [&>*]:py-9">
+      <div className="mt-10 container page-padding-x [&>*]:py-9">
         <TopMoviesSection trending={trending} />
       </div>
     </div>

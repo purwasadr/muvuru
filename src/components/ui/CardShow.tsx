@@ -21,7 +21,7 @@ const CardShow = ({
         <ScoreShow score={vote_average ?? 0} />
       </div>
       <div className="relative z-10 bg-gradient-to-t to-transparent from-black pt-8 pb-4 px-4">
-        <h4 className="mt-4">{`${title} ${release_date ?  `(${new Date(release_date).getFullYear()})` : ''}`}</h4>
+        <h4 className="mt-4 line-clamp-3">{`${title} ${release_date ?  `(${new Date(release_date).getFullYear()})` : ''}`}</h4>
       </div>
       <Image
         className="z-0 object-cover"
