@@ -1,0 +1,50 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  h1 {
+    @apply text-4xl font-semibold;
+  }
+
+  h2 {
+    @apply text-2xl font-semibold;
+  }
+}
+
+@layer components {
+  .pagination-break-link {
+    @apply hidden px-3 py-2 ml-0 leading-tight text-white bg-slate-800 border border-slate-700 hover:bg-gray-900;
+  }
+
+  .pagination-page-link {
+    @apply px-3 py-2 text-white bg-slate-800 border border-slate-700 hover:bg-gray-900;
+  }
+
+  .pagination-active-link {
+    @apply px-3 py-2 text-white bg-red-700 hover:bg-red-800 ;
+  }
+
+  .pagination-previous-link {
+    @apply px-3 py-2 block text-white border rounded-l-lg border-slate-700 hover:bg-gray-900;
+  }
+
+  .pagination-next-link {
+    @apply px-3 py-2 block text-white border rounded-r-lg border-slate-700 hover:bg-gray-900;
+  }
+
+  .carousel-item-center {
+    @apply flex justify-start;
+  }
+
+  .carousel-container {
+    @apply w-[1536px];
+  }
+}
+
+@layer utilities {
+
+  .page-width {
+    @apply container px-6 md:px-10;
+  }
+}
