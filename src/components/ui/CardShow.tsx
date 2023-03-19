@@ -15,12 +15,12 @@ const CardShow = ({
   return (
     <Link
       href={media_type === 'movie' ? `/movie/${id}` : `/tv/${id}`}
-      className="relative w-[180px] aspect-[1/1.5] overflow-hidden rounded-xl flex flex-col justify-between"
+      className="relative w-[150px] md:w-[180px] aspect-[1/1.5] overflow-hidden rounded-xl flex flex-col justify-between"
     >
-      <div className="relative z-10 bg-gradient-to-b to-transparent from-black py-4 px-4">
+      <div className="relative z-10 bg-gradient-to-b to-transparent from-black py-3.5 md:py-4 px-3.5 md:px-4">
         <ScoreShow score={vote_average ?? 0} />
       </div>
-      <div className="relative z-10 bg-gradient-to-t to-transparent from-black pt-8 pb-4 px-4">
+      <div className="relative z-10 bg-gradient-to-t to-transparent from-black pt-8 pb-3.5 md:pb-4 px-3.5 md:px-4">
         <h4 className="mt-4 line-clamp-3">{`${title} ${release_date ?  `(${new Date(release_date).getFullYear()})` : ''}`}</h4>
       </div>
       <Image
