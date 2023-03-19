@@ -57,9 +57,14 @@ const TopMoviesSection = ({ trending }: Props) => {
     //   partialVisibilityGutter: -60
     // },
     main: {
-      breakpoint: { min: 0, max: 4000 },
+      breakpoint: { min: 769, max: 4000 },
       items: 7,
       partialVisibilityGutter: 15
+    },
+    md: {
+      breakpoint: { min: 0, max: 768},
+      items: 8,
+      partialVisibilityGutter: 25
     }
   };
 

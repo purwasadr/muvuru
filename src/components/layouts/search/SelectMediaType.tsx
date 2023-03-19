@@ -21,7 +21,7 @@ const SelectMediaType = ({ className, items, defaultValue, onValueChange, value 
     >
       <SelectPrimitive.Trigger
         className={twMerge(
-          'flex items-center text-sm rounded-full px-4 gap-1 bg-transparent outline-none',
+          'flex items-center text-sm rounded-full pl-4 gap-1 bg-transparent outline-none',
           className
         )}
         aria-label="Type"
@@ -33,6 +33,7 @@ const SelectMediaType = ({ className, items, defaultValue, onValueChange, value 
       </SelectPrimitive.Trigger>
       <SelectPrimitive.Portal>
         <SelectPrimitive.Content
+          onPointerDownOutside={(e) => e.preventDefault()}
           position="popper"
           className="z-50 overflow-hidden bg-slate-800 border-[1px] border-slate-700 rounded-md"
         >
