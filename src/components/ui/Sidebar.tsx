@@ -29,7 +29,7 @@ const Sidebar = () => {
               />
             </Dialog.Overlay>
             <Dialog.Content
-              className="fixed z-50 inset-y-0 right-0 w-[90vw] max-w-[180px] rounded-l-xl bg-slate-900/70 backdrop-blur p-[25px] focus:outline-none"
+              className="fixed z-50 inset-y-0 right-0 w-[90vw] max-w-[180px] rounded-l-lg bg-slate-900/70 backdrop-blur p-5 sm:p-6 focus:outline-none"
               asChild
               forceMount
             >
@@ -49,7 +49,7 @@ const Sidebar = () => {
                 </Dialog.Close>
                 <ul className="flex flex-col mt-3">
                   {sidebarLinks.map((item) => (
-                    <li className="" key={item.id} onClick={(e) => {setIsOpen(false)}}>
+                    <li key={item.id} onClick={(e) => {setIsOpen(false)}}>
                       <Link href={item.link} className="block text-secondary py-2 hover:text-primary">{item.caption}</Link>
                     </li>
                   ))}

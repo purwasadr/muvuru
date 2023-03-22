@@ -1,12 +1,6 @@
-import Dropdown, { DropdownItem } from '@/components/ui/Dropdown';
-import Select from '@/components/ui/Select';
-import Button from '@/components/ui/Button';
-import { SelectItem } from '@/components/ui/Select';
 import { useRouter } from 'next/router';
-import { isString } from '@/utils';
-import { discoverSortSelections, showSorting } from '@/constants';
-
-
+import { discoverSortSelections } from '@/constants';
+import SelectFilter from '@/components/layouts/discover/SelectFilter';
 
 interface Props {
   prefixPath: string;
@@ -27,8 +21,8 @@ const SortAndFilterSection = ({prefixPath}: Props) => {
   return (
     <section className="py-4">
       <div className="s">
-        <label className="block">Sort</label>
-        <Select
+        <label className="block">Sort By</label>
+        <SelectFilter
           className="mt-2"
           onValueChange={handleSelectChange}
           items={discoverSortSelections}

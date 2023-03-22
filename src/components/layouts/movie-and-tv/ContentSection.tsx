@@ -1,3 +1,4 @@
+import CastAndCrewSection from '@/components/layouts/movie-and-tv/CastAndCrewSection';
 import DetailsSection from '@/components/layouts/movie-and-tv/DetailsSection';
 import Button from '@/components/ui/Button';
 import CardCredit from '@/components/ui/CardCredit';
@@ -64,20 +65,22 @@ const ContentSection = ({ showDetail, showCredit }: Props) => {
             <p>{`${showDetail.number_of_seasons} Seasons`}</p>
           </div>
         )}
-        <Button className="rounded-full mt-5" size={'large'}>Watch Trailer</Button>
+        <div className="flex items-center space-x-4  mt-5">
+          <div className="flex items-center space-x-3">
+            <ScoreShow className="bg-slate-700" radius={22} fontSize={'md'} stroke={2.3} score={vote_average ?? 0} />
+            <div>
+              <p className="text-sm font-semibold">Reviews</p>
+              <p className="text-secondary text-sm">{showDetail.vote_count}</p>
+            </div>
+          </div>
+          <div className="h-7 w-[1px] bg-slate-700" />
+          <Button fullRounded size={'large'}>Watch Trailer</Button>
+        </div>
         <p className="mt-5 text-sm leading-relaxed text-secondary">{showDetail.overview}</p>
         <DetailsSection showDetail={showDetail} />
       </div>
       {/* Child section */}
-      <div className="mt-[55px]">
-        <h2>Cast and Crew</h2>
-        <ul className='space-y-4 mt-5'>
-          {showCredit?.cast?.slice(0, 5).map((cast) => (
-            <CardCredit key={cast.id} credit={cast} />
-          ))}
-        </ul>
-        <Button className="mx-auto" intent="text">View All</Button>
-      </div>
+     <CastAndCrewSection className="mt-[55px] lg:max-w-[250px] lg:w-full" casts={showCredit?.cast?.slice(0, 5)} />
     </section>
   );
 };

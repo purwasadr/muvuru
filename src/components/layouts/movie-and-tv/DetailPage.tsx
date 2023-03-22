@@ -23,7 +23,6 @@ const DetailPage = ({ showDetail, showCredit }: Props) => {
       </Head>
       <HeroSection backdropPath={showDetail.backdrop_path} alt={showDetail.title} />
       <div className="container page-padding-x">
-
         <ContentSection showDetail={showDetail} showCredit={showCredit}/>
       </div>
     </div>

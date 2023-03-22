@@ -8,7 +8,7 @@ interface Props {
 
 const HeroSection = ({ backdropPath, alt }: Props) => {
   return (
-    <section className="relative h-[400px]">
+    <section className="relative h-[400px] max-w-screen-2xl">
       <Image
         className="object-cover brightness-[.8]"
         src={getImageUrl(1280, backdropPath ?? '')}

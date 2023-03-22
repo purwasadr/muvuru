@@ -1,69 +1,89 @@
-import { ShowSorting } from '@/constants';
+import { Overlay } from '@/components/ui/Overlay';
+import cn from '@/utils';
 import * as SelectPrimitive from '@radix-ui/react-select';
-// import * as SelectPrimitive from '@radix-ui/react-select';
-import { Check, ChevronDown, ChevronUp } from 'lucide-react';
+import { Check, ChevronDown } from 'lucide-react';
 import React from 'react';
-import { twMerge } from 'tailwind-merge';
 
-export interface SelectItem extends ShowSorting {}
-
-interface Props extends SelectPrimitive.SelectProps {
-  className?: string;
-  items: SelectItem[];
+export interface SelectItem {
+  id: number;
+  caption: string;
+  value: string;
 }
 
-const Select = ({ className, items, defaultValue, onValueChange, value }: Props) => {
-  return (
-    <SelectPrimitive.Root
-      onValueChange={onValueChange}
-      defaultValue={defaultValue}
-      value={value}
-    >
-      <SelectPrimitive.Trigger
-        className={twMerge(
-          'flex items-center text-sm rounded px-3 h-[35px] gap-1 bg-red-700 hover:bg-red-800 outline-none',
+export const Select = SelectPrimitive.Root;
+
+export const SelectGroup = SelectPrimitive.Group;
+
+export const SelectValue = SelectPrimitive.Value;
+
+export const SelectTrigger = React.forwardRef<
+  React.ElementRef<typeof SelectPrimitive.Trigger>,
+  React.ComponentPropsWithoutRef<typeof SelectPrimitive.Trigger>
+>(({ className, children, ...props }, ref) => (
+  <SelectPrimitive.Trigger
+    ref={ref}
+    className={cn(
+      'flex items-center text-sm rounded px-3 h-[35px] gap-1 bg-red-700 hover:bg-red-800 outline-none',
+      className
+    )}
+    {...props}
+  >
+    {children}
+    <ChevronDown className="h-4 w-4 opacity-50" />
+  </SelectPrimitive.Trigger>
+));
+
+SelectTrigger.displayName = SelectPrimitive.Trigger.displayName;
+
+type SelectContent = React.ForwardRefExoticComponent<{ open: boolean;} & SelectPrimitive.SelectContentProps & React.RefAttributes<HTMLDivElement>>
+
+export const SelectContent = React.forwardRef<
+  React.ElementRef<SelectContent>,
+  React.ComponentPropsWithoutRef<SelectContent>
+>(({ className, open, children, ...props }, ref) => (
+  <SelectPrimitive.Portal>
+    <>
+      {/* Workaround for touch events propagating to underlying elements https://github.com/radix-ui/primitives/issues/1658 */}
+      <Overlay open={open} />
+      <SelectPrimitive.Content
+        ref={ref}
+        className={cn(
+          'z-50 overflow-hidden bg-slate-800 border-[1px] border-slate-700 rounded-md',
           className
         )}
-        aria-label="Type"
+        {...props}
       >
-        <SelectPrimitive.Value />
-        <SelectPrimitive.Icon className="text-primary">
-          <ChevronDown />
-        </SelectPrimitive.Icon>
-      </SelectPrimitive.Trigger>
-      <SelectPrimitive.Portal>
-        <SelectPrimitive.Content
-          position="popper"
-          className="z-50 overflow-hidden bg-slate-800 border-[1px] border-slate-700 rounded-md"
-        >
-          <SelectPrimitive.ScrollUpButton className="flex items-center justify-center h-[25px] bg-slate-800 cursor-default">
-            <ChevronUp />
-          </SelectPrimitive.ScrollUpButton>
-          <SelectPrimitive.Viewport className="p-1">
-            <SelectPrimitive.Group>
-              {items.map((item) => (
-                <SelectItem key={item.value} value={item.value}>
-                  {item.caption}
-                </SelectItem>
-              ))}
-            </SelectPrimitive.Group>
-          </SelectPrimitive.Viewport>
-          <SelectPrimitive.ScrollDownButton className="flex items-center justify-center h-[25px] bg-slate-800 text-white cursor-default">
-            <ChevronDown />
-          </SelectPrimitive.ScrollDownButton>
-        </SelectPrimitive.Content>
-      </SelectPrimitive.Portal>
-    </SelectPrimitive.Root>
-  );
-};
+        <SelectPrimitive.Viewport className="p-1">
+          {children}
+        </SelectPrimitive.Viewport>
+      </SelectPrimitive.Content>
+    </>
+  </SelectPrimitive.Portal>
+));
+SelectContent.displayName = SelectPrimitive.Content.displayName;
 
-const SelectItem = React.forwardRef<
+const SelectLabel = React.forwardRef<
+  React.ElementRef<typeof SelectPrimitive.Label>,
+  React.ComponentPropsWithoutRef<typeof SelectPrimitive.Label>
+>(({ className, ...props }, ref) => (
+  <SelectPrimitive.Label
+    ref={ref}
+    className={cn(
+      'min-w-[150px] text-sm font-semibold text-primary rounded-md flex items-center py-2 px-3 select-none',
+      className
+    )}
+    {...props}
+  />
+));
+SelectLabel.displayName = SelectPrimitive.Label.displayName;
+
+export const SelectItem = React.forwardRef<
   React.ElementRef<typeof SelectPrimitive.Item>,
   React.ComponentPropsWithoutRef<typeof SelectPrimitive.Item>
 >(({ className, children, ...props }, ref) => (
   <SelectPrimitive.Item
     ref={ref}
-    className={twMerge(
+    className={cn(
       'relative min-w-[150px] text-sm text-primary rounded-md flex items-center py-2 px-3 select-none data-[disabled]:text-secondary data-[disabled]:pointer-events-none data-[highlighted]:outline-none data-[highlighted]:bg-slate-700',
       className
     )}
@@ -74,4 +94,14 @@ const SelectItem = React.forwardRef<
 ));
 SelectItem.displayName = SelectPrimitive.Item.displayName;
 
-export default Select;
+const SelectSeparator = React.forwardRef<
+  React.ElementRef<typeof SelectPrimitive.Separator>,
+  React.ComponentPropsWithoutRef<typeof SelectPrimitive.Separator>
+>(({ className, ...props }, ref) => (
+  <SelectPrimitive.Separator
+    ref={ref}
+    className={cn('-mx-1 my-1 h-px bg-slate-100 dark:bg-slate-700', className)}
+    {...props}
+  />
+));
+SelectSeparator.displayName = SelectPrimitive.Separator.displayName;

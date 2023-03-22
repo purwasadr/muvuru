@@ -59,13 +59,13 @@ const TopMoviesSection = ({ trending }: Props) => {
     main: {
       breakpoint: { min: 769, max: 4000 },
       items: 7,
-      partialVisibilityGutter: 15
+      partialVisibilityGutter: 20,
     },
     md: {
-      breakpoint: { min: 0, max: 768},
+      breakpoint: { min: 0, max: 768 },
       items: 8,
-      partialVisibilityGutter: 25
-    }
+      partialVisibilityGutter: 25,
+    },
   };
 
   const carouselRef = useRef<Carousel>(null);
@@ -73,28 +73,39 @@ const TopMoviesSection = ({ trending }: Props) => {
   return (
     <section className="relative z-30">
       <h2 className="text-center font-medium text-3xl">Trending</h2>
-      <div className="flex space-x-2 justify-start mt-10">
-        <Button fullRounded={false} onClick={(e) => carouselRef.current?.previous(2)}><ChevronLeft className="h-5 w-5"/></Button>
-        <Button fullRounded={false} onClick={(e) => carouselRef.current?.next(2)} ><ChevronRight className="h-5 w-5"/></Button>
+      <div className="flex space-x-2 justify-end mt-10">
+        <Button
+          fullRounded={false}
+          onClick={(e) => carouselRef.current?.previous(2)}
+        >
+          <ChevronLeft className="h-5 w-5" />
+        </Button>
+        <Button
+          fullRounded={false}
+          onClick={(e) => carouselRef.current?.next(2)}
+        >
+          <ChevronRight className="h-5 w-5" />
+        </Button>
       </div>
       <div className="overflow-hidden">
-      <Carousel
-        className="mt-4"
-        responsive={carouselResponsive}
-        customLeftArrow={<CarouselBtnLeft />}
-        customRightArrow={<CarouselBtnRight />}
-        itemClass={"carousel-item-center"}
-        containerClass={"carousel-container"}
-        ref={carouselRef}
-        arrows={false}
-        autoPlay
-        // rewindWithAnimation
-        // rewind
-        partialVisible
-        infinite
-      >
-        {trending?.map((show) => <CardShow key={show.id} show={show} />) || []}
-      </Carousel>
+        <Carousel
+          className="mt-4"
+          responsive={carouselResponsive}
+          customLeftArrow={<CarouselBtnLeft />}
+          customRightArrow={<CarouselBtnRight />}
+          itemClass={'carousel-item-center'}
+          containerClass={'carousel-container'}
+          ref={carouselRef}
+          arrows={false}
+          autoPlay
+          // rewindWithAnimation
+          // rewind
+          partialVisible
+          infinite
+        >
+          {trending?.map((show) => <CardShow key={show.id} show={show} />) ||
+            []}
+        </Carousel>
       </div>
 
       {/* <ul className="flex flex-wrap gap-4 mt-8">
