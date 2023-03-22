@@ -1,9 +1,11 @@
+import { Overlay } from '@/components/ui/Overlay';
 import { ShowSorting } from '@/constants';
+import cn from '@/utils';
 import * as SelectPrimitive from '@radix-ui/react-select';
-// import * as SelectPrimitive from '@radix-ui/react-select';
 import { Check, ChevronDown, ChevronUp } from 'lucide-react';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { twMerge } from 'tailwind-merge';
+
 
 export interface SelectItem extends ShowSorting {}
 
@@ -12,15 +14,24 @@ interface Props extends SelectPrimitive.SelectProps {
   items: SelectItem[];
 }
 
-const SelectMediaType = ({ className, items, defaultValue, onValueChange, value }: Props) => {
+const SelectMediaType = ({
+  className,
+  items,
+  defaultValue,
+  onValueChange,
+  value,
+}: Props) => {
+  const [open, setOpen] = useState(false);
+
   return (
     <SelectPrimitive.Root
       onValueChange={onValueChange}
       defaultValue={defaultValue}
       value={value}
+      onOpenChange={(open) => setOpen(open)}
     >
       <SelectPrimitive.Trigger
-        className={twMerge(
+        className={cn(
           'flex items-center text-sm rounded-full pl-4 gap-1 bg-transparent outline-none',
           className
         )}
@@ -32,27 +43,29 @@ const SelectMediaType = ({ className, items, defaultValue, onValueChange, value 
         </SelectPrimitive.Icon>
       </SelectPrimitive.Trigger>
       <SelectPrimitive.Portal>
-        <SelectPrimitive.Content
-          onPointerDownOutside={(e) => e.preventDefault()}
-          position="popper"
-          className="z-50 overflow-hidden bg-slate-800 border-[1px] border-slate-700 rounded-md"
-        >
-          <SelectPrimitive.ScrollUpButton className="flex items-center justify-center h-[25px] bg-slate-800 cursor-default">
-            <ChevronUp />
-          </SelectPrimitive.ScrollUpButton>
-          <SelectPrimitive.Viewport className="p-1">
-            <SelectPrimitive.Group>
-              {items.map((item) => (
-                <SelectItem key={item.value} value={item.value}>
-                  {item.caption}
-                </SelectItem>
-              ))}
-            </SelectPrimitive.Group>
-          </SelectPrimitive.Viewport>
-          <SelectPrimitive.ScrollDownButton className="flex items-center justify-center h-[25px] bg-slate-800 text-white cursor-default">
-            <ChevronDown />
-          </SelectPrimitive.ScrollDownButton>
-        </SelectPrimitive.Content>
+        <>
+          <Overlay open={open} />
+          <SelectPrimitive.Content
+            position="popper"
+            className="z-50 overflow-hidden bg-slate-800 border-[1px] border-slate-700 rounded-md"
+          >
+            <SelectPrimitive.ScrollUpButton className="flex items-center justify-center h-[25px] bg-slate-800 cursor-default">
+              <ChevronUp />
+            </SelectPrimitive.ScrollUpButton>
+            <SelectPrimitive.Viewport className="p-1">
+              <SelectPrimitive.Group>
+                {items.map((item) => (
+                  <SelectItem key={item.value} value={item.value}>
+                    {item.caption}
+                  </SelectItem>
+                ))}
+              </SelectPrimitive.Group>
+            </SelectPrimitive.Viewport>
+            <SelectPrimitive.ScrollDownButton className="flex items-center justify-center h-[25px] bg-slate-800 text-white cursor-default">
+              <ChevronDown />
+            </SelectPrimitive.ScrollDownButton>
+          </SelectPrimitive.Content>
+        </>
       </SelectPrimitive.Portal>
     </SelectPrimitive.Root>
   );
