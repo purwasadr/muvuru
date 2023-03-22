@@ -11,13 +11,17 @@ const DetailsSection = ({ showDetail }: Props) => {
   return (
     <div className="mt-8">
       <h2>Details</h2>
-      <table className="mt-5 table-auto text-sm text-left ">
+      <table className="mt-5 table-auto w-full max-w-[600px] text-sm text-left ">
+        <colgroup>
+          <col className="w-[45%] md:w-[35%]" />
+          <col className="w-[55%] md:w-[65%]"/>
+        </colgroup>
         <tbody>
           <tr className="border-b border-slate-700">
-            <th scope="row" className="w-[200px] py-3 font-medium pr-3">
+            <th scope="row" className="py-3 font-medium pr-3">
               Genres
             </th>
-            <td className="w-[600px] py-2 text-secondary">
+            <td className="py-2 text-secondary">
               <ul className="flex flex-wrap gap-2">
                 {genres?.map((genre) => (
                   <li className="py-1 px-3 bg-slate-700 text-xs rounded-full" key={genre.id}>{genre.name}</li>
