@@ -69,8 +69,8 @@ const ContentSection = ({ showDetail, showCredit }: Props) => {
           <div className="flex items-center space-x-3">
             <ScoreShow className="bg-slate-700" radius={22} fontSize={'md'} stroke={2.3} score={vote_average ?? 0} />
             <div>
-              <p className="text-sm font-semibold">Reviews</p>
-              <p className="text-secondary text-sm">{showDetail.vote_count}</p>
+              <p className="text-sm font-semibold">{showDetail.vote_count?.toLocaleString()}</p>
+              <p className="text-secondary text-sm">reviews</p>
             </div>
           </div>
           <div className="h-7 w-[1px] bg-slate-700" />

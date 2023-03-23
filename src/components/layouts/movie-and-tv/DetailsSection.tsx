@@ -2,11 +2,11 @@ import { ShowDetail } from '@/types';
 import { arrayToString } from '@/utils';
 
 interface Props {
-  showDetail: Pick<ShowDetail, 'genres' | 'spoken_languages' | 'status'>;
+  showDetail: Pick<ShowDetail, 'genres' | 'spoken_languages' | 'status' | 'revenue'>;
 }
 
 const DetailsSection = ({ showDetail }: Props) => {
-  const { genres, spoken_languages, status } = showDetail
+  const { genres, spoken_languages, status, revenue } = showDetail
 
   return (
     <div className="mt-8">
@@ -44,6 +44,12 @@ const DetailsSection = ({ showDetail }: Props) => {
               Status
             </th>
             <td className="py-3 text-secondary">{showDetail.status}</td>
+          </tr>
+          <tr className="border-b border-slate-700">
+            <th scope="row" className="py-3 font-medium pr-3">
+              Revenue
+            </th>
+            <td className="py-3 text-secondary">{revenue ? `$ ${revenue?.toLocaleString()}.00` : '-'}</td>
           </tr>
         </tbody>
       </table>
