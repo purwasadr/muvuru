@@ -26,9 +26,9 @@ export const getTvCredit = async (id: number) => {
   return data;
 }
 
-export const getSearchTv = async (query: string) => {
+export const getSearchTv = async (query: string, page: number = 1) => {
   const { data } = await axios.get<ResponseList<Tv>>(
-    `${MOVIEDB_API_URL}/3/search/movie?api_key=${MOVIEDB_API_KEY_V3}&query=${query}&include_adult=false`
+    `${MOVIEDB_API_URL}/3/search/tv?api_key=${MOVIEDB_API_KEY_V3}&query=${query}&page=${page}&include_adult=false`
   );
   return data;
 }

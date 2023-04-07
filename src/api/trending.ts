@@ -7,7 +7,10 @@ const getTrending = async (mediaType: 'all' | 'movie' | 'tv' | 'person' = 'all')
   const {data} = await axios.get<ResponseList<Movie | Tv>>(
     `${MOVIEDB_API_URL}/3/trending/${mediaType}/day?api_key=${MOVIEDB_API_KEY_V3}`
   );
-  return toShows(data.results);
+  return  {
+    ...data,
+    results: toShows(data.results)
+  };
 };
 
 export {getTrending};
