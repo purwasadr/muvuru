@@ -1,5 +1,4 @@
 import { movieGenre } from '@/constants';
-import { Genre } from '@/types';
 import clsx, { ClassValue } from 'clsx';
 import { twMerge } from 'tailwind-merge';
 
@@ -68,13 +67,13 @@ export const getDateShort = (dateString?: string) => {
 
   return date.toLocaleDateString('id-ID', {
       day: 'numeric',
-      month: 'numeric',
+      month: 'short',
       year: '2-digit',
       formatMatcher: 'basic'
   });
 };
 
-export default function cn(...classes: ClassValue[]) {
+export function cn(...classes: ClassValue[]) {
   return twMerge(clsx(...classes));
 }
 
