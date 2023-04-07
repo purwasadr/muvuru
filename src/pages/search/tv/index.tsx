@@ -15,14 +15,15 @@ interface GSSProps {
 }
 
 export const getServerSideProps: GetServerSideProps<GSSProps> = async (ctx) => {
-  const { query } = ctx.query;
+  const query = ctx.query?.query?.toString() ?? '';
+  const page = ctx.query?.page?.toString() ?? '1'
 
-  const [movies] = await Promise.allSettled([getSearchTv(query?.toString() ?? '')])
+  const [tv] = await Promise.allSettled([getSearchTv(query, Number(page))])
 
-  if (movies.status ==='fulfilled') {
+  if (tv.status ==='fulfilled') {
     return {
       props: {
-        show: movies.value
+        show: tv.value
       }
     }
   }

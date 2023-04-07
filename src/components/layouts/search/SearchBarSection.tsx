@@ -4,7 +4,7 @@ import { Search } from 'lucide-react';
 import { useRouter } from 'next/router';
 import { searchMediaType } from '@/constants';
 import { FormEvent, useState } from 'react';
-import cn from '@/utils';
+import { cn } from '@/utils';
 
 interface Props {
   selectValue: string;

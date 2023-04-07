@@ -47,15 +47,20 @@ const HeroSection = ({ popularMovies }: Props) => {
                   new Date(movie.release_date ?? '').getFullYear() +
                   ')'}
               </h1>
-              <div className="flex space-x-3 mt-3 items-center">
-                <ScoreShow score={movie.vote_average ?? 0} />
-                <div className="h-5 w-[1.5px] rounded-full bg-gray-400"></div>
-                <p className="text-center text-gray-300">1h 30m</p>
-              </div>
-              <p className="text-gray-300 mt-2 text-center">
+              <p className="text-gray-300 mt-3 text-center">
                 {getMovieGenreFromIds(movie.genre_ids)}
               </p>
-              <Button className="mt-4">See Details</Button>
+              <div className="flex space-x-4 mt-3 items-center">
+                <div className="flex items-center space-x-3">
+                  <ScoreShow radius={25} stroke={3} fontSize={'md'} score={movie.vote_average ?? 0} />
+                  <div className="max-[300px]:hidden flex flex-col -space-y-1">
+                    <p className="text-lg">{movie.vote_count?.toLocaleString()}</p>
+                    <p className="text-secondary text-sm">reviews</p>
+                  </div>
+                </div>
+                <div className="h-7 w-[1.5px] rounded-full bg-slate-600"></div>
+                <Button className="py-2.5 px-5">See Details</Button>
+              </div>
             </div>
             <div className="absolute inset-x-0 bottom-0 z-10 h-[300px] bg-gradient-to-t from-slate-800 to-transparent" />
           </article>

@@ -12,7 +12,9 @@ export default function App({Component, pageProps}: AppProps) {
         <title>Muvuru</title>
       </Head>
       <Navbar />
-      <Component {...pageProps} />
+      <div className="min-h-screen">
+        <Component {...pageProps} />
+      </div>
       <Footer />
     </>
   );

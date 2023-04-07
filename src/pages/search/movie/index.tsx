@@ -15,9 +15,10 @@ interface GSSProps {
 }
 
 export const getServerSideProps: GetServerSideProps<GSSProps> = async (ctx) => {
-  const { query } = ctx.query;
+  const query = ctx.query?.query?.toString() ?? '';
+  const page = ctx.query?.page?.toString() ?? '1'
 
-  const [movies] = await Promise.allSettled([getSearchMovies(query?.toString() ?? '')])
+  const [movies] = await Promise.allSettled([getSearchMovies(query, Number(page))])
 
   if (movies.status ==='fulfilled') {
     return {

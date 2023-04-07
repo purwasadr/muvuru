@@ -35,7 +35,7 @@ const Navbar = () => {
       }`}
     >
       <div className="flex justify-between items-center container page-padding-x py-5 w-full">
-        <p className="text-xl font-medium text-white uppercase">Muvuru</p>
+        <p className="text-xl font-medium text-white uppercase cursor-pointer">Muvuru</p>
         <div className="max-md:hidden">
           <li className="flex space-x-7">
             {navLinks.map((item) => (
