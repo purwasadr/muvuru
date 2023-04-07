@@ -5,7 +5,7 @@ import {
   SelectValue,
   SelectTrigger,
 } from '@/components/ui/Select';
-import cn from '@/utils';
+import { cn } from '@/utils';
 import  * as SelectPrimitive from '@radix-ui/react-select';
 import { ChevronDown } from 'lucide-react';
 import { useState } from 'react';

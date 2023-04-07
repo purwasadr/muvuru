@@ -22,13 +22,13 @@ const getSeriesYear = (first_air_date?: Date, last_air_date?: Date) => {
   if (last_air_date) {
     date = `${date}-${new Date(last_air_date).getFullYear()})`
   } else {
-    date = `)`
+    date = `${date})`
   }
   return date
 }
 
 const ContentSection = ({ showDetail, showCredit }: Props) => {  
-  const {title, poster_path, vote_average, vote_count} = showDetail;
+  const {title, poster_path, vote_average, vote_count, first_air_date, last_air_date, number_of_episodes, number_of_seasons} = showDetail;
 
   return (
     <section className="z-20 relative -top-[200px] flex flex-col lg:flex-row gap-x-10">
@@ -41,10 +41,6 @@ const ContentSection = ({ showDetail, showCredit }: Props) => {
           src={getImageUrl(500, poster_path ?? '')}
           alt={title ?? ''}
         />
-        {/* <div className='flex items-center mt-4 space-x-2'>
-          <ScoreShow className="" radius={28} fontSize={'lg'} stroke={3} score={vote_average ?? 0} />
-          <p className='text-sm'>{`${vote_count?.toLocaleString()}`} <span className="text-secondary">ratings</span></p>
-        </div> */}
       </div>
       {/* Child section */}
       <div className="mt-10 md:mt-[55px] flex-1">
@@ -58,11 +54,11 @@ const ContentSection = ({ showDetail, showCredit }: Props) => {
           </div>
         ) : (
           <div className="flex flex-wrap gap-x-2 text-sm mt-2">
-            <p>{`Series ${getSeriesYear(showDetail.first_air_date, showDetail.last_air_date)}`}</p>
+            <p>{`Series ${first_air_date || last_air_date ? getSeriesYear(first_air_date, last_air_date) : '-'}`}</p>
             <p>•</p>
-            <p>{`${showDetail.number_of_episodes} Episodes`}</p>
+            <p>{`${number_of_episodes ? number_of_episodes : '-'} Episodes`}</p>
             <p>•</p>
-            <p>{`${showDetail.number_of_seasons} Seasons`}</p>
+            <p>{`${number_of_episodes ? number_of_seasons : '-'} Seasons`}</p>
           </div>
         )}
         <div className="flex items-center space-x-4  mt-5">

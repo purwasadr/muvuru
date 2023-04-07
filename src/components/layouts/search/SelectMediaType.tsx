@@ -1,6 +1,6 @@
 import { Overlay } from '@/components/ui/Overlay';
 import { ShowSorting } from '@/constants';
-import cn from '@/utils';
+import { cn } from '@/utils';
 import * as SelectPrimitive from '@radix-ui/react-select';
 import { Check, ChevronDown, ChevronUp } from 'lucide-react';
 import React, { useEffect, useState } from 'react';
