@@ -2,6 +2,7 @@ import Button from '@/components/ui/Button';
 import CardShow from '@/components/ui/CardShow';
 import CarouselBtnLeft from '@/components/ui/CarouselBtnLeft';
 import CarouselBtnRight from '@/components/ui/CarouselBtnRight';
+import ImageButton from '@/components/ui/ImageButton';
 import { Movie, Show, Tv } from '@/types';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { useRef } from 'react';
@@ -72,45 +73,41 @@ const TopMoviesSection = ({ trending }: Props) => {
 
   return (
     <section className="relative z-30">
-      <h2 className="text-center font-medium text-3xl">Trending</h2>
-      <div className="flex space-x-2 justify-end mt-10">
-        <Button
-          fullRounded={false}
-          onClick={(e) => carouselRef.current?.previous(2)}
-        >
+      <h2 className="text-center">Trending</h2>
+      <div className="flex space-x-2 justify-end mt-12">
+        <ImageButton onClick={(e) => carouselRef.current?.previous(2)}>
           <ChevronLeft className="h-5 w-5" />
-        </Button>
-        <Button
-          fullRounded={false}
-          onClick={(e) => carouselRef.current?.next(2)}
-        >
+        </ImageButton>
+        <ImageButton onClick={(e) => carouselRef.current?.next(2)}>
           <ChevronRight className="h-5 w-5" />
-        </Button>
+        </ImageButton>
       </div>
-      <div className="overflow-hidden">
-        <Carousel
-          className="mt-4"
-          responsive={carouselResponsive}
-          customLeftArrow={<CarouselBtnLeft />}
-          customRightArrow={<CarouselBtnRight />}
-          itemClass={'carousel-item-center'}
-          containerClass={'carousel-container'}
-          ref={carouselRef}
-          arrows={false}
-          autoPlay
-          // rewindWithAnimation
-          // rewind
-          partialVisible
-          infinite
-        >
-          {trending?.map((show) => <CardShow key={show.id} show={show} />) ||
-            []}
-        </Carousel>
-      </div>
-
-      {/* <ul className="flex flex-wrap gap-4 mt-8">
-        
-      </ul> */}
+      {trending ? (
+        <div className="overflow-hidden">
+          <Carousel
+            className="mt-4"
+            responsive={carouselResponsive}
+            customLeftArrow={<CarouselBtnLeft />}
+            customRightArrow={<CarouselBtnRight />}
+            itemClass={'carousel-item-center'}
+            containerClass={'carousel-container'}
+            ref={carouselRef}
+            arrows={false}
+            autoPlay
+            // rewindWithAnimation
+            // rewind
+            partialVisible
+            infinite
+          >
+            {trending?.map((show) => <CardShow key={show.id} show={show} />) ||
+              []}
+          </Carousel>
+        </div>
+      ) : (
+        <div className="flex items-center justify-center h-[150px]">
+          <p>Cannot fetch data</p>
+        </div>
+      )}
     </section>
   );
 };

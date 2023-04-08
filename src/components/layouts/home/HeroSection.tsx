@@ -4,6 +4,7 @@ import { MOVIEDB_IMAGE_URL } from '@/constants/env';
 import { Movie } from '@/types';
 import { getMovieGenreFromIds } from '@/utils';
 import Image from 'next/image';
+import Link from 'next/link';
 import Carousel from 'react-multi-carousel';
 
 interface Props {
@@ -59,7 +60,7 @@ const HeroSection = ({ popularMovies }: Props) => {
                   </div>
                 </div>
                 <div className="h-7 w-[1.5px] rounded-full bg-slate-600"></div>
-                <Button className="py-2.5 px-5">See Details</Button>
+                <Link href={`/movie/${movie.id}`}><Button>See Details</Button></Link>
               </div>
             </div>
             <div className="absolute inset-x-0 bottom-0 z-10 h-[300px] bg-gradient-to-t from-slate-800 to-transparent" />

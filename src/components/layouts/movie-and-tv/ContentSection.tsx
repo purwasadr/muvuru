@@ -45,34 +45,34 @@ const ContentSection = ({ showDetail, showCredit }: Props) => {
       {/* Child section */}
       <div className="mt-10 md:mt-[55px] flex-1">
         <h1>{showDetail.title}</h1>
-        <p className="text-sm text-secondary mt-2">Original title : {showDetail.original_title}</p>
+        <p className="text-secondary mt-2">Original title : {showDetail.original_title || '-'}</p>
         {showDetail.media_type === 'movie' ? (
-          <div className="flex space-x-2 text-sm mt-2">
+          <div className="flex space-x-2 mt-2">
             <p>{getDateShort(showDetail.release_date?.toString())}</p>
             <p>•</p>
             <p>{minuteToText(showDetail.runtime)}</p>
           </div>
         ) : (
-          <div className="flex flex-wrap gap-x-2 text-sm mt-2">
+          <div className="flex flex-wrap gap-x-2 mt-2">
             <p>{`Series ${first_air_date || last_air_date ? getSeriesYear(first_air_date, last_air_date) : '-'}`}</p>
             <p>•</p>
-            <p>{`${number_of_episodes ? number_of_episodes : '-'} Episodes`}</p>
+            <p>{`${number_of_episodes || '-'} Episodes`}</p>
             <p>•</p>
-            <p>{`${number_of_episodes ? number_of_seasons : '-'} Seasons`}</p>
+            <p>{`${number_of_seasons || '-'} Seasons`}</p>
           </div>
         )}
         <div className="flex items-center space-x-4  mt-5">
           <div className="flex items-center space-x-3">
             <ScoreShow className="bg-slate-700" radius={22} fontSize={'md'} stroke={2.3} score={vote_average ?? 0} />
             <div>
-              <p className="text-sm font-semibold">{showDetail.vote_count?.toLocaleString()}</p>
-              <p className="text-secondary text-sm">reviews</p>
+              <p className="font-semibold">{showDetail.vote_count?.toLocaleString() || '-'}</p>
+              <p className="text-secondary text-sm -mt-0.5">reviews</p>
             </div>
           </div>
           <div className="h-7 w-[1px] bg-slate-700" />
-          <Button fullRounded size={'large'}>Watch Trailer</Button>
+          <Button fullRounded size={'base'}>Watch Trailer</Button>
         </div>
-        <p className="mt-5 text-sm leading-relaxed text-secondary">{showDetail.overview}</p>
+        <p className="mt-5 leading-relaxed text-secondary">{showDetail.overview}</p>
         <DetailsSection showDetail={showDetail} />
       </div>
       {/* Child section */}

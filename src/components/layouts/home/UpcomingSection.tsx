@@ -1,5 +1,8 @@
 import CardShow2 from '@/components/ui/CardShow2';
+import ImageButton from '@/components/ui/ImageButton';
 import { Movie } from '@/types';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { useRef } from 'react';
 import Carousel from 'react-multi-carousel';
 
 interface Props {
@@ -22,17 +25,32 @@ export const UpcomingSection = ({upcomingMovies}: Props) => {
     // }
   };
 
+  const carouselRef = useRef<Carousel>(null);
+
   return (
     <section>
       <h2 className="text-center">Upcoming</h2>
+      <div className="flex space-x-2 justify-end mt-12">
+        <ImageButton
+          onClick={(e) => carouselRef.current?.previous(2)}
+        >
+          <ChevronLeft className="h-5 w-5" />
+        </ImageButton>
+        <ImageButton
+          onClick={(e) => carouselRef.current?.next(2)}
+        >
+          <ChevronRight className="h-5 w-5" />
+        </ImageButton>
+      </div>
       <Carousel
-        className="mt-12 w-full"
+        className="mt-4 w-full"
         responsive={carouselResponsive}
         itemClass={'carousel-item-center'}
         arrows={false}
         autoPlay
         rewind={true}
         autoPlaySpeed={5000}
+        ref={carouselRef}
       >
         {upcomingMovies?.map((movie) => <CardShow2 key={movie.id} show={movie} mediaType={'movie'} /> )}
         </Carousel>

@@ -10,13 +10,8 @@ const buttonStyles = cva(
   {
     variants: {
       intent: {
-        primary: [
-          'text-white',
-          'bg-red-700 hover:bg-red-800',
-        ],
-        text: [
-          'bg-transparent text-red-700',
-        ],
+        primary: ['text-white', 'bg-red-700 hover:bg-red-800'],
+        text: ['bg-transparent text-red-700'],
       },
       size: {
         small: 'text-xs px-3 py-2',
@@ -28,13 +23,45 @@ const buttonStyles = cva(
       },
       fullRounded: {
         true: 'rounded-full',
-        false: 'rounded-md'
-      }
+        false: 'rounded-md',
+      },
     },
+    compoundVariants: [
+      {
+        fullRounded: true,
+        size: 'small',
+        className: 'py-2.5 px-4',
+      },
+      {
+        fullRounded: true,
+        size: 'base',
+        className: 'py-2.5 px-5',
+      },
+      {
+        fullRounded: true,
+        size: 'large',
+        className: 'py-2.5 px-5',
+      },
+      {
+        fullRounded: false,
+        size: 'small',
+        className: 'px-3 py-2',
+      },
+      {
+        fullRounded: false,
+        size: 'base',
+        className: 'px-4 py-2',
+      },
+      {
+        fullRounded: false,
+        size: 'large',
+        className: 'px-5 py-2.5',
+      },
+    ],
     defaultVariants: {
       intent: 'primary',
       size: 'base',
-      fullRounded: true
+      fullRounded: true,
     },
   }
 );
@@ -50,7 +77,10 @@ const Button = ({
 }: Props) => {
   return (
     <button
-      className={cn(buttonStyles({ fullWidth, size, intent, fullRounded }), className)}
+      className={cn(
+        buttonStyles({ fullWidth, size, intent, fullRounded }),
+        className
+      )}
       {...props}
     >
       {children}
