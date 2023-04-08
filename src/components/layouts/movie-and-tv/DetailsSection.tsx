@@ -11,7 +11,7 @@ const DetailsSection = ({ showDetail }: Props) => {
   return (
     <div className="mt-8">
       <h2>Details</h2>
-      <table className="mt-5 table-auto w-full max-w-[600px] text-sm text-left ">
+      <table className="mt-5 table-auto w-full max-w-[600px] text-left ">
         <colgroup>
           <col className="w-[45%] md:w-[35%]" />
           <col className="w-[55%] md:w-[65%]"/>
