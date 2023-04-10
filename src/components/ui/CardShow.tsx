@@ -4,6 +4,7 @@ import { Movie, Show, Tv } from '@/types';
 import { cn } from '@/utils';
 import Image from 'next/image';
 import Link from 'next/link';
+import { ImageOff } from 'lucide-react'
 
 interface Props {
   show: Show;
@@ -20,7 +21,9 @@ const CardShow = ({
       //  w-[150px] md:w-[180px]
       // min-w-[150px] max-w-[180px]
       className={cn(
-        `@container relative aspect-[1/1.5] overflow-hidden rounded-lg flex flex-col justify-between ${fullWidth ? 'w-full' : 'w-[150px] md:w-[180px]'}`,
+        `@container relative aspect-[1/1.5] overflow-hidden rounded-lg flex flex-col justify-between ${
+          fullWidth ? 'w-full' : 'w-[150px] md:w-[180px]'
+        }`
       )}
     >
       <div className="relative z-10 bg-gradient-to-b to-transparent from-black py-3.5 @[170px]:py-4 px-3.5 @[170px]:px-4">
@@ -31,12 +34,18 @@ const CardShow = ({
           release_date ? `(${new Date(release_date).getFullYear()})` : ''
         }`}</h4>
       </div>
-      <Image
-        className="z-0 object-cover"
-        src={`${MOVIEDB_IMAGE_URL}/t/p/w200${poster_path}`}
-        fill
-        alt={`Poster ${title}`}
-      />
+      {poster_path ? (
+        <Image
+          className="z-0 object-cover"
+          src={`${MOVIEDB_IMAGE_URL}/t/p/w200${poster_path}`}
+          fill
+          alt={`Poster ${title}`}
+        />
+      ) : (
+        <div className="absolute z-0 bg-slate-400 flex justify-center items-center w-full h-full">
+          <ImageOff className="h-14 w-14" />
+        </div>
+      )}
     </Link>
   );
 };

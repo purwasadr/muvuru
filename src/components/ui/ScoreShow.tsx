@@ -1,11 +1,12 @@
 import ProgressRing from '@/components/ui/ProgressRing';
+import { cn } from '@/utils';
 import { twMerge } from 'tailwind-merge';
 
 interface Props {
   className?: string;
   score: number;
   radius?: number;
-  fontSize?: 'sm' | 'md' | 'lg' | 'xl';
+  fontSize?: 'sm' | 'base' | 'lg' | 'xl';
   stroke?: number;
 }
 
@@ -28,7 +29,15 @@ const ScoreShow = ({ className, score, radius = 19, fontSize = 'sm', stroke = 2}
         radiusComp={radius}
         progress={score * 10}
       />
-      <p className={`absolute text-${fontSize} top-[50%] -translate-y-[50%] left-[50%] -translate-x-[50%]`}>
+      <p className={cn(
+        `absolute top-[50%] -translate-y-[50%] left-[50%] -translate-x-[50%]`,
+        [
+          fontSize === 'sm' && 'text-sm' ,
+          fontSize === 'base' && 'text-base',
+          fontSize === 'lg' && 'text-lg',
+          fontSize === 'xl' && 'text-xl',
+        ]
+        )}>
         {score?.toPrecision(2)}
       </p>
     </div>

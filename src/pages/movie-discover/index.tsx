@@ -29,22 +29,20 @@ export const getServerSideProps: GetServerSideProps<{
   const sortBy = discoverSortSelections.find((item) => item.value === querySortBy) ? querySortBy : discoverSortSelections[0].value ;
   
   const [moviesDiscover] = await Promise.allSettled([getMoviesDiscover(Number.parseInt(page), sortBy)]);
-  
-  // const resResult = getOnFulfilled(moviesDiscover)
-  // const showDiscover: ResponseList<Show> | undefined = resResult ? {
-  //   ...resResult,
-  //   results: resResult?.results?.map((movie) => (toShow(movie)))
-  // } : undefined;
 
-  const settleRes = getOnFulfilled(moviesDiscover)
+  let props = {};
 
-  const showDiscover = {
-    ...settleRes,
-    results: settleRes?.results?.map((movie) => (toShow(movie))),
+  if (moviesDiscover.status === 'fulfilled') {
+    props = {
+      ...props,
+      showDiscover: {
+        ...moviesDiscover.value,
+        results: moviesDiscover.value?.results?.map((movie) => toShow(movie)),
+      }
+    }
   }
+
   return {
-    props: {
-      showDiscover
-    },
+    props
   };
 };

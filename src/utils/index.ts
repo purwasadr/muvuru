@@ -68,7 +68,7 @@ export const getDateShort = (dateString?: string) => {
   return date.toLocaleDateString('id-ID', {
       day: 'numeric',
       month: 'short',
-      year: '2-digit',
+      year: 'numeric',
       formatMatcher: 'basic'
   });
 };
