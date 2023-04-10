@@ -1,3 +1,4 @@
+import CaCreDialog from '@/components/layouts/movie-and-tv/CaCreDialog';
 import Button from '@/components/ui/Button';
 import CardCredit from '@/components/ui/CardCredit';
 import { Cast } from '@/types';
@@ -12,11 +13,11 @@ const CastAndCrewSection = ({casts, className}: Props) => {
       <div className={className}>
         <h2>Cast and Crew</h2>
         <ul className='space-y-4 mt-5'>
-          {casts?.map((cast) => (
+          {casts?.slice(0, 5).map((cast) => (
             <CardCredit key={cast.id} credit={cast} />
           ))}
         </ul>
-        <Button className="mt-2 mx-auto" intent="text">View All</Button>
+        <CaCreDialog className="mt-2 mx-auto" casts={casts} />
       </div>
   );
 }

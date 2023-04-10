@@ -2,7 +2,7 @@ import ScoreShow from '@/components/ui/ScoreShow';
 import { getImageUrl } from '@/constants';
 import { Show } from '@/types';
 import { getDateShort } from '@/utils';
-import { Star } from 'lucide-react';
+import { ImageOff, Star } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -12,12 +12,18 @@ interface Props {
 }
 
 const CardShow2 = ({show, mediaType}: Props) => {
-  const { id, title, poster_path, overview, vote_average, release_date } = show
+  const { id, title, overview, poster_path, vote_average, release_date } = show
 
   return (
-    <li className="flex flex-col max-sm:items-center sm:flex-row gap-5 p-5">
+    <li className="flex flex-col max-sm:items-center sm:flex-row gap-5 px-5">
       <div className="relative aspect-[1/1.5] w-full max-w-[180px] rounded-md overflow-hidden">
-        <Image className="" src={getImageUrl(500, poster_path ?? '')} alt={title ?? ''} fill />
+        {poster_path ? (
+          <Image className="" src={getImageUrl(500, poster_path ?? '')} alt={title ?? ''} fill />
+        ) : (
+          <div className="bg-slate-400 h-full w-full flex justify-center items-center">
+            <ImageOff className="w-[50%] h-[50%]" />
+          </div>
+        )}
       </div>
       <div className="flex-1 py-1">
         <Link href={mediaType === 'movie' ? `/movie/${id}` : `/tv/${id}`}>
@@ -25,7 +31,7 @@ const CardShow2 = ({show, mediaType}: Props) => {
         </Link>
         <div className="flex space-x-2 items-center mt-3 max-sm:justify-center">
           <div className="flex items-center space-x-1 -mr-1">
-            <p className="-mr-0.5">{vote_average}</p>
+            <p className="-mr-0.5">{vote_average || 'n/a'}</p>
             <Star className='h-[16px] stroke-yellow-500' />
           </div>
           <p>•</p>

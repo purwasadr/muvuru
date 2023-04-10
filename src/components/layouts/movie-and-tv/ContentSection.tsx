@@ -6,6 +6,7 @@ import ScoreShow from '@/components/ui/ScoreShow';
 import { getImageUrl } from '@/constants';
 import { ShowCredit, ShowDetail } from '@/types';
 import { getDateShort, minuteToText } from '@/utils';
+import { ImageOff } from 'lucide-react';
 import Image from 'next/image';
 
 interface Props {
@@ -31,16 +32,23 @@ const ContentSection = ({ showDetail, showCredit }: Props) => {
   const {title, poster_path, vote_average, vote_count, first_air_date, last_air_date, number_of_episodes, number_of_seasons} = showDetail;
 
   return (
-    <section className="z-20 relative -top-[200px] flex flex-col lg:flex-row gap-x-10">
+    <section className="z-20 relative -top-[200px] flex flex-col lg:flex-row gap-x-10 -mb-[200px]">
       {/* Child section */}
       <div className="relative">
-        <Image
-          className="rounded-lg object-cover shadow-md"
-          width={180}
-          height={270}
-          src={getImageUrl(500, poster_path ?? '')}
-          alt={title ?? ''}
-        />
+        {poster_path ? (
+          <Image
+            className="rounded-lg object-cover shadow-md"
+            width={180}
+            height={270}
+            src={getImageUrl(500, poster_path ?? '')}
+            alt={title ?? ''}
+          />
+        ) : (
+          <div className="rounded-lg shadow-md bg-slate-400 h-[270px] w-[180px] flex justify-center items-center">
+            <ImageOff className="w-[50%] h-[50%]" />
+          </div>
+        )
+      }
       </div>
       {/* Child section */}
       <div className="mt-10 md:mt-[55px] flex-1">
@@ -63,7 +71,7 @@ const ContentSection = ({ showDetail, showCredit }: Props) => {
         )}
         <div className="flex items-center space-x-4  mt-5">
           <div className="flex items-center space-x-3">
-            <ScoreShow className="bg-slate-700" radius={22} fontSize={'md'} stroke={2.3} score={vote_average ?? 0} />
+            <ScoreShow className="bg-slate-700" radius={22} fontSize={'base'} stroke={2.3} score={vote_average ?? 0} />
             <div>
               <p className="font-semibold">{showDetail.vote_count?.toLocaleString() || '-'}</p>
               <p className="text-secondary text-sm -mt-0.5">reviews</p>
@@ -76,7 +84,8 @@ const ContentSection = ({ showDetail, showCredit }: Props) => {
         <DetailsSection showDetail={showDetail} />
       </div>
       {/* Child section */}
-     <CastAndCrewSection className="mt-[55px] lg:max-w-[250px] lg:w-full" casts={showCredit?.cast?.slice(0, 5)} />
+     <CastAndCrewSection className="mt-10 lg:mt-[55px] lg:max-w-[275px] lg:w-full" casts={showCredit?.cast} />
+
     </section>
   );
 };

@@ -36,7 +36,7 @@ const DetailsSection = ({ showDetail }: Props) => {
             <td className="py-3 text-secondary">
               {arrayToString(
                 showDetail.spoken_languages?.map((value) => value.name ?? 'N/A')
-              )}
+              ) || '-'}
             </td>
           </tr>
           <tr className="border-b border-slate-700">
