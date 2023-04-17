@@ -6,83 +6,68 @@ import { getMovieGenreFromIds } from '@/utils';
 import { ImageOff } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
-import Carousel from 'react-multi-carousel';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Pagination } from 'swiper';
 
 interface Props {
   popularMovies?: Movie[];
 }
 
 const HeroSection = ({ popularMovies }: Props) => {
-  const carouselResponsive = {
-    main: {
-      breakpoint: { min: 0, max: 4000 },
-      items: 1,
-    },
-  };
-
   return (
-    <section className="w-full max-w-screen-2xl">
-      <Carousel
-        className="w-full"
-        responsive={carouselResponsive}
-        itemClass={'carousel-item-center'}
-        arrows={false}
-        autoPlay
-        rewind={true}
-        autoPlaySpeed={5000}
-      >
+    <section className='w-full max-w-screen-2xl'>
+      <Swiper slidesPerView={1} modules={[Pagination]}>
         {popularMovies?.slice(0, 5).map((movie) => (
-          <article
-            className="relative h-[450px] md:h-[600px] w-full flex flex-col justify-end items-center"
-            key={movie.id}
-          >
-            {movie.backdrop_path ? (
-              <Image
-                className="brightness-[.8] absolute z-0 object-cover"
-                src={`${MOVIEDB_IMAGE_URL}/t/p/w1280${movie.backdrop_path}`}
-                fill
-                alt={movie.title ?? ''}
-              />
-            ) : (
-              <div className="absolute inset-0 z-0 bg-slate-400 flex items-center justify-center">
-                <ImageOff className="h-[50%] w-[50%]" />
-              </div>
-            )}
-            <div className="relative flex flex-col justify-end items-center z-20 mb-10 w-full page-padding-x">
-              <h1 className="text-center">
-                {movie.title +
-                  ' (' +
-                  new Date(movie.release_date ?? '').getFullYear() +
-                  ')'}
-              </h1>
-              <p className="text-gray-300 mt-3 text-center">
-                {getMovieGenreFromIds(movie.genre_ids)}
-              </p>
-              <div className="flex space-x-4 mt-3 items-center">
-                <div className="flex items-center space-x-3">
-                  <ScoreShow
-                    radius={25}
-                    stroke={3}
-                    fontSize={'base'}
-                    score={movie.vote_average ?? 0}
-                  />
-                  <div className="max-[300px]:hidden flex flex-col -space-y-1">
-                    <p className="text-lg">
-                      {movie.vote_count?.toLocaleString()}
-                    </p>
-                    <p className="text-secondary text-sm">reviews</p>
-                  </div>
+          <SwiperSlide key={movie.id}>
+            <article className='relative flex h-[452px] w-full flex-col items-center justify-end md:h-[600px]'>
+              {movie.backdrop_path ? (
+                <Image
+                  className='absolute z-0 object-cover brightness-[.8]'
+                  src={`${MOVIEDB_IMAGE_URL}/t/p/w1280${movie.backdrop_path}`}
+                  fill
+                  alt={movie.title ?? ''}
+                />
+              ) : (
+                <div className='absolute inset-0 z-0 flex items-center justify-center bg-slate-400'>
+                  <ImageOff className='h-[50%] w-[50%]' />
                 </div>
-                <div className="h-7 w-[1.5px] rounded-full bg-slate-600"></div>
-                <Link href={`/movie/${movie.id}`}>
-                  <Button>See Details</Button>
-                </Link>
+              )}
+              <div className='page-padding-x relative z-20 mb-10 flex w-full flex-col items-center justify-end'>
+                <h1 className='text-center'>
+                  {movie.title +
+                    ' (' +
+                    new Date(movie.release_date ?? '').getFullYear() +
+                    ')'}
+                </h1>
+                <p className='mt-3 text-center text-gray-300'>
+                  {getMovieGenreFromIds(movie.genre_ids)}
+                </p>
+                <div className='mt-3 flex items-center space-x-4'>
+                  <div className='flex items-center space-x-3'>
+                    <ScoreShow
+                      radius={25}
+                      stroke={3}
+                      fontSize={'base'}
+                      score={movie.vote_average ?? 0}
+                    />
+                    <div className='flex flex-col -space-y-1 max-[300px]:hidden'>
+                      <p className='text-lg'>
+                        {movie.vote_count?.toLocaleString()}
+                      </p>
+                      <p className='text-sm text-secondary'>reviews</p>
+                    </div>
+                  </div>
+                  <div className='h-7 w-[1.5px] rounded-full bg-slate-600'></div>
+                  <Link href={`/movie/${movie.id}`}>
+                    <Button>See Details</Button>
+                  </Link>
+                </div>
               </div>
-            </div>
-            <div className="absolute inset-x-0 bottom-0 z-10 h-[300px] bg-gradient-to-t from-slate-800 to-transparent" />
-          </article>
+              <div className='absolute inset-x-0 bottom-0 z-10 h-[300px] bg-gradient-to-t from-slate-800 to-transparent' />
+            </article>
+          </SwiperSlide>
         ))}
-      </Carousel>
+      </Swiper>
     </section>
   );
 };

@@ -1,3 +1,1 @@
-export const getMultiSearch = () => {
-  
-}
+export const getMultiSearch = () => {};

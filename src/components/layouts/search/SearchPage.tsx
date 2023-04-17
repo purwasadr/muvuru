@@ -9,9 +9,8 @@ interface Props {
 }
 
 const SearchPage = ({ selectValue, shows }: Props) => {
-
   return (
-    <div className="[&>*]:mx-auto mx-auto container page-padding-x mt-[68px]">
+    <div className='page-padding-x container mx-auto mt-[68px] [&>*]:mx-auto'>
       <SearchBarSection className='py-6' selectValue={selectValue} />
       <ShowsSection shows={shows?.results} />
       <PaginationSection totalPages={shows?.total_pages} />

@@ -9,11 +9,8 @@ interface Props {
 }
 
 const DetailPage = ({ showDetail, showCredit }: Props) => {
-  
   if (!showDetail) {
-    return (
-      <div>Error cuk</div>
-    )
+    return <div>Error cuk</div>;
   }
 
   return (
@@ -21,10 +18,13 @@ const DetailPage = ({ showDetail, showCredit }: Props) => {
       <Head>
         <title>{showDetail?.title ?? 'Muvuru'}</title>
       </Head>
-      <HeroSection backdropPath={showDetail.backdrop_path} alt={showDetail.title} />
-      <div className="container page-padding-x">
-        <ContentSection showDetail={showDetail} showCredit={showCredit}/>
-        <div className="h-12"></div>
+      <HeroSection
+        backdropPath={showDetail.backdrop_path}
+        alt={showDetail.title}
+      />
+      <div className='page-padding-x container'>
+        <ContentSection showDetail={showDetail} showCredit={showCredit} />
+        <div className='h-12'></div>
       </div>
     </div>
   );

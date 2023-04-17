@@ -6,10 +6,14 @@ interface Props {
   prefixPath: string;
 }
 
-const SortAndFilterSection = ({prefixPath}: Props) => {
+const SortAndFilterSection = ({ prefixPath }: Props) => {
   const router = useRouter();
   const querySortBy = router.query.sort_by?.toString();
-  const sortBy = discoverSortSelections.find((item) => item.value === querySortBy) ? querySortBy : discoverSortSelections[0].value ;
+  const sortBy = discoverSortSelections.find(
+    (item) => item.value === querySortBy
+  )
+    ? querySortBy
+    : discoverSortSelections[0].value;
 
   const handleSelectChange = (value: string) => {
     router.push({
@@ -19,11 +23,11 @@ const SortAndFilterSection = ({prefixPath}: Props) => {
   };
 
   return (
-    <section className="py-4">
-      <div className="s">
-        <label className="block">Sort By</label>
+    <section className='py-4'>
+      <div className='s'>
+        <label className='block'>Sort By</label>
         <SelectFilter
-          className="mt-2"
+          className='mt-2'
           onValueChange={handleSelectChange}
           items={discoverSortSelections}
           value={sortBy}

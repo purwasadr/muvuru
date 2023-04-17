@@ -3,19 +3,19 @@ import { getTrending } from '@/api/trending';
 import HeroSection from '@/components/layouts/home/HeroSection';
 import TopMoviesSection from '@/components/layouts/home/TrendingSection';
 import { UpcomingSection } from '@/components/layouts/home/UpcomingSection';
-import { Movie, Show, Tv } from '@/types';
+import { Movie, Show } from '@/types';
 import { getOnFulfilled } from '@/utils';
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next';
 
 export default function Home({
   trending,
   popularMovies,
-  upcomingMovies
+  upcomingMovies,
 }: InferGetServerSidePropsType<typeof getServerSideProps>) {
   return (
     <div className={`[&>*]:mx-auto`}>
       <HeroSection popularMovies={popularMovies} />
-      <div className="mt-10 container page-padding-x [&>*]:py-9">
+      <div className='page-padding-x container mt-10 [&>*]:py-9'>
         <TopMoviesSection trending={trending} />
         <UpcomingSection upcomingMovies={upcomingMovies} />
       </div>
@@ -31,38 +31,38 @@ export const getServerSideProps: GetServerSideProps<{
   const [trending, popularMovies, upcomingMovies] = await Promise.allSettled([
     getTrending(),
     getPopularMovies(),
-    getUpcomingMovies()
+    getUpcomingMovies(),
   ]);
-  
+
   let props = {};
 
   const trendingRes = getOnFulfilled(trending)?.results;
-  
+
   if (trendingRes) {
     props = {
       ...props,
-      trending: trendingRes
-    }
+      trending: trendingRes,
+    };
   }
 
   const popularMoviesRes = getOnFulfilled(popularMovies)?.results;
   if (popularMoviesRes) {
     props = {
       ...props,
-      popularMovies: popularMoviesRes
-    }
+      popularMovies: popularMoviesRes,
+    };
   }
 
-  const upcomingMoviesRes = getOnFulfilled(upcomingMovies)?.results
+  const upcomingMoviesRes = getOnFulfilled(upcomingMovies)?.results;
 
   if (upcomingMoviesRes) {
     props = {
       ...props,
-      upcomingMovies: upcomingMoviesRes
-    }
+      upcomingMovies: upcomingMoviesRes,
+    };
   }
 
   return {
-    props
+    props,
   };
 };

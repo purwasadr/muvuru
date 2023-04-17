@@ -19,9 +19,7 @@ const buttonStyles = cva(
         large: 'p-2.5 rounded-md',
       },
     },
-    compoundVariants: [
-      
-    ],
+    compoundVariants: [],
     defaultVariants: {
       intent: 'primary',
       size: 'base',
@@ -38,10 +36,7 @@ const ImageButton = ({
 }: Props) => {
   return (
     <button
-      className={cn(
-        buttonStyles({size, intent }),
-        className
-      )}
+      className={cn(buttonStyles({ size, intent }), className)}
       {...props}
     >
       {children}

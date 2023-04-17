@@ -6,10 +6,10 @@ import { useRef } from 'react';
 import Carousel from 'react-multi-carousel';
 
 interface Props {
-  upcomingMovies?: Movie[]
+  upcomingMovies?: Movie[];
 }
 
-export const UpcomingSection = ({upcomingMovies}: Props) => {
+export const UpcomingSection = ({ upcomingMovies }: Props) => {
   const carouselResponsive = {
     main: {
       breakpoint: { min: 0, max: 1000 },
@@ -29,21 +29,17 @@ export const UpcomingSection = ({upcomingMovies}: Props) => {
 
   return (
     <section>
-      <h2 className="text-center">Upcoming</h2>
-      <div className="flex space-x-2 justify-end mt-12">
-        <ImageButton
-          onClick={(e) => carouselRef.current?.previous(2)}
-        >
-          <ChevronLeft className="h-5 w-5" />
+      <h2 className='text-center'>Upcoming</h2>
+      <div className='mt-12 flex justify-end space-x-2'>
+        <ImageButton onClick={(e) => carouselRef.current?.previous(2)}>
+          <ChevronLeft className='h-5 w-5' />
         </ImageButton>
-        <ImageButton
-          onClick={(e) => carouselRef.current?.next(2)}
-        >
-          <ChevronRight className="h-5 w-5" />
+        <ImageButton onClick={(e) => carouselRef.current?.next(2)}>
+          <ChevronRight className='h-5 w-5' />
         </ImageButton>
       </div>
       <Carousel
-        className="mt-4 w-full"
+        className='mt-4 w-full'
         responsive={carouselResponsive}
         itemClass={'carousel-item-center'}
         arrows={false}
@@ -52,8 +48,10 @@ export const UpcomingSection = ({upcomingMovies}: Props) => {
         autoPlaySpeed={5000}
         ref={carouselRef}
       >
-        {upcomingMovies?.map((movie) => <CardShow2 key={movie.id} show={movie} mediaType={'movie'} /> )}
-        </Carousel>
+        {upcomingMovies?.map((movie) => (
+          <CardShow2 key={movie.id} show={movie} mediaType={'movie'} />
+        ))}
+      </Carousel>
     </section>
   );
-}
+};

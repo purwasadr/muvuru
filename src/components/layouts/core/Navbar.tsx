@@ -30,14 +30,16 @@ const Navbar = () => {
 
   return (
     <nav
-      className={`fixed z-50 inset-x-0 top-0 transition-colors flex justify-center ${RemoveScroll.classNames.fullWidth} ${
-        isNavBgDark ? 'bg-slate-900/50 backdrop-blur' : 'bg-transparent'
-      }`}
+      className={`fixed inset-x-0 top-0 z-50 flex justify-center transition-colors ${
+        RemoveScroll.classNames.fullWidth
+      } ${isNavBgDark ? 'bg-slate-900/50 backdrop-blur' : 'bg-transparent'}`}
     >
-      <div className="flex justify-between items-center container page-padding-x py-5 w-full">
-        <p className="text-xl font-medium text-white uppercase cursor-pointer">Muvuru</p>
-        <div className="max-md:hidden">
-          <li className="flex space-x-7">
+      <div className='page-padding-x container flex w-full items-center justify-between py-5'>
+        <p className='cursor-pointer text-xl font-medium uppercase text-white'>
+          Muvuru
+        </p>
+        <div className='max-md:hidden'>
+          <li className='flex space-x-7'>
             {navLinks.map((item) => (
               <ul key={item.id}>
                 {item.links ? (
@@ -49,7 +51,7 @@ const Navbar = () => {
                 ) : (
                   <Link
                     href={item.link ?? '#'}
-                    className="text-white hover:text-primary"
+                    className='text-white hover:text-primary'
                   >
                     {item.caption}
                   </Link>
@@ -58,7 +60,7 @@ const Navbar = () => {
             ))}
           </li>
         </div>
-        <div className="flex items-center md:hidden">
+        <div className='flex items-center md:hidden'>
           <Sidebar />
         </div>
       </div>

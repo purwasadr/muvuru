@@ -13,20 +13,20 @@ const PaginationSection = ({ totalPages }: Props) => {
   const pageCount = totalPages ?? 0;
 
   if (pageCount < 2) {
-    return(<></>)
+    return <></>;
   }
 
   return (
     <section>
       <ReactPaginate
-        className="flex items-center w-fit mx-auto py-6 "
-        breakLinkClassName="pagination-break-link"
-        pageLinkClassName="pagination-page-link"
-        activeLinkClassName="pagination-active-link"
-        previousLinkClassName="pagination-previous-link"
-        nextLinkClassName="pagination-next-link"
-        nextLabel={<ChevronRight className="h-5 w-5" />}
-        previousLabel={<ChevronLeft className="h-5 w-5" />}
+        className='mx-auto flex w-fit items-center py-6 '
+        breakLinkClassName='pagination-break-link'
+        pageLinkClassName='pagination-page-link'
+        activeLinkClassName='pagination-active-link'
+        previousLinkClassName='pagination-previous-link'
+        nextLinkClassName='pagination-next-link'
+        nextLabel={<ChevronRight className='h-5 w-5' />}
+        previousLabel={<ChevronLeft className='h-5 w-5' />}
         pageRangeDisplayed={3}
         marginPagesDisplayed={0}
         onClick={(clickEvent) => {

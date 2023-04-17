@@ -1,13 +1,12 @@
-import { getSearchMovies } from '@/api/movie';
 import { getSearchTv } from '@/api/tv';
 import SearchPage from '@/components/layouts/search/SearchPage';
 import { Movie, ResponseList, Tv } from '@/types';
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next';
 
-export default function SearchTv({show}:InferGetServerSidePropsType<typeof getServerSideProps>) {
-  return (
-    <SearchPage selectValue='tv' shows={show} />
-  );
+export default function SearchTv({
+  show,
+}: InferGetServerSidePropsType<typeof getServerSideProps>) {
+  return <SearchPage selectValue='tv' shows={show} />;
 }
 
 interface GSSProps {
@@ -16,21 +15,19 @@ interface GSSProps {
 
 export const getServerSideProps: GetServerSideProps<GSSProps> = async (ctx) => {
   const query = ctx.query?.query?.toString() ?? '';
-  const page = ctx.query?.page?.toString() ?? '1'
+  const page = ctx.query?.page?.toString() ?? '1';
 
-  const [tv] = await Promise.allSettled([getSearchTv(query, Number(page))])
+  const [tv] = await Promise.allSettled([getSearchTv(query, Number(page))]);
 
-  if (tv.status ==='fulfilled') {
+  if (tv.status === 'fulfilled') {
     return {
       props: {
-        show: tv.value
-      }
-    }
+        show: tv.value,
+      },
+    };
   }
 
   return {
-    props:{
-
-    }
-  }
-}
+    props: {},
+  };
+};

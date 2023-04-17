@@ -1,11 +1,5 @@
 import { MOVIEDB_API_KEY_V3, MOVIEDB_API_URL } from '@/constants/env';
-import {
-  Movie,
-  MovieDetail,
-  ResponseList,
-  Show,
-  ShowCredit,
-} from '@/types';
+import { Movie, MovieDetail, ResponseList, ShowCredit } from '@/types';
 import axios from 'axios';
 
 export const getPopularMovies = async (page: number = 1) => {

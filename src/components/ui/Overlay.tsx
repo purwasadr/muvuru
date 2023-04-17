@@ -18,7 +18,7 @@ export const Overlay = ({ open }: { open: boolean }) => {
 
   return visible ? (
     <div
-      className="fixed isolate inset-0 z-40"
+      className='fixed inset-0 isolate z-40'
       onClick={(e) => e.stopPropagation()}
     />
   ) : null;

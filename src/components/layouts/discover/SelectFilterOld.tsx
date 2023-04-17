@@ -1,7 +1,7 @@
 import { ShowSorting } from '@/constants';
 import * as SelectPrimitive from '@radix-ui/react-select';
 // import * as SelectPrimitive from '@radix-ui/react-select';
-import { Check, ChevronDown, ChevronUp } from 'lucide-react';
+import { ChevronDown, ChevronUp } from 'lucide-react';
 import React from 'react';
 import { twMerge } from 'tailwind-merge';
 
@@ -12,7 +12,13 @@ interface Props extends SelectPrimitive.SelectProps {
   items: SelectItem[];
 }
 
-const SelectFilter = ({ className, items, defaultValue, onValueChange, value }: Props) => {
+const SelectFilter = ({
+  className,
+  items,
+  defaultValue,
+  onValueChange,
+  value,
+}: Props) => {
   return (
     <SelectPrimitive.Root
       onValueChange={onValueChange}
@@ -21,25 +27,25 @@ const SelectFilter = ({ className, items, defaultValue, onValueChange, value }: 
     >
       <SelectPrimitive.Trigger
         className={twMerge(
-          'flex items-center text-sm rounded px-3 h-[35px] gap-1 bg-red-700 hover:bg-red-800 outline-none',
+          'flex h-[35px] items-center gap-1 rounded bg-red-700 px-3 text-sm outline-none hover:bg-red-800',
           className
         )}
-        aria-label="Type"
+        aria-label='Type'
       >
         <SelectPrimitive.Value />
-        <SelectPrimitive.Icon className="text-primary">
+        <SelectPrimitive.Icon className='text-primary'>
           <ChevronDown />
         </SelectPrimitive.Icon>
       </SelectPrimitive.Trigger>
       <SelectPrimitive.Portal>
         <SelectPrimitive.Content
-          position="popper"
-          className="z-50 overflow-hidden bg-slate-800 border-[1px] border-slate-700 rounded-md"
+          position='popper'
+          className='z-50 overflow-hidden rounded-md border-[1px] border-slate-700 bg-slate-800'
         >
-          <SelectPrimitive.ScrollUpButton className="flex items-center justify-center h-[25px] bg-slate-800 cursor-default">
+          <SelectPrimitive.ScrollUpButton className='flex h-[25px] cursor-default items-center justify-center bg-slate-800'>
             <ChevronUp />
           </SelectPrimitive.ScrollUpButton>
-          <SelectPrimitive.Viewport className="p-1">
+          <SelectPrimitive.Viewport className='p-1'>
             <SelectPrimitive.Group>
               {items.map((item) => (
                 <SelectItem key={item.value} value={item.value}>
@@ -48,7 +54,7 @@ const SelectFilter = ({ className, items, defaultValue, onValueChange, value }: 
               ))}
             </SelectPrimitive.Group>
           </SelectPrimitive.Viewport>
-          <SelectPrimitive.ScrollDownButton className="flex items-center justify-center h-[25px] bg-slate-800 text-white cursor-default">
+          <SelectPrimitive.ScrollDownButton className='flex h-[25px] cursor-default items-center justify-center bg-slate-800 text-white'>
             <ChevronDown />
           </SelectPrimitive.ScrollDownButton>
         </SelectPrimitive.Content>
@@ -64,7 +70,7 @@ const SelectItem = React.forwardRef<
   <SelectPrimitive.Item
     ref={ref}
     className={twMerge(
-      'relative min-w-[150px] text-sm text-primary rounded-md flex items-center py-2 px-3 select-none data-[disabled]:text-secondary data-[disabled]:pointer-events-none data-[highlighted]:outline-none data-[highlighted]:bg-slate-700',
+      'relative flex min-w-[150px] select-none items-center rounded-md px-3 py-2 text-sm text-primary data-[disabled]:pointer-events-none data-[highlighted]:bg-slate-700 data-[disabled]:text-secondary data-[highlighted]:outline-none',
       className
     )}
     {...props}

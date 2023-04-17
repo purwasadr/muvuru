@@ -17,18 +17,18 @@ export const getTvDetail = async (id: number) => {
     `${MOVIEDB_API_URL}/3/tv/${id}?api_key=${MOVIEDB_API_KEY_V3}`
   );
   return data;
-}
+};
 
 export const getTvCredit = async (id: number) => {
   const { data } = await axios.get<ShowCredit>(
     `${MOVIEDB_API_URL}/3/tv/${id}/credits?api_key=${MOVIEDB_API_KEY_V3}`
   );
   return data;
-}
+};
 
 export const getSearchTv = async (query: string, page: number = 1) => {
   const { data } = await axios.get<ResponseList<Tv>>(
     `${MOVIEDB_API_URL}/3/search/tv?api_key=${MOVIEDB_API_KEY_V3}&query=${query}&page=${page}&include_adult=false`
   );
   return data;
-}
+};

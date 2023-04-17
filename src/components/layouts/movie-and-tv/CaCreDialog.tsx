@@ -3,7 +3,6 @@ import CardCredit from '@/components/ui/CardCredit';
 import {
   Dialog,
   DialogTrigger,
-  DialogDescription,
   DialogHeader,
   DialogTitle,
   DialogContent,
@@ -20,13 +19,17 @@ interface Props {
 const CaCreDialog = ({ casts, className }: Props) => {
   return (
     <Dialog>
-      <DialogTrigger asChild><Button className={cn(className)} intent="text">View All</Button></DialogTrigger>
+      <DialogTrigger asChild>
+        <Button className={cn(className)} intent='text'>
+          View All
+        </Button>
+      </DialogTrigger>
       <DialogContent>
         <DialogHeader>
           <DialogTitle>Cast and Crew</DialogTitle>
         </DialogHeader>
-        <ScrollArea className="max-h-[50vh]">
-          <ul className="space-y-4">
+        <ScrollArea className='max-h-[50vh]'>
+          <ul className='space-y-4'>
             {casts?.map((cast) => (
               <CardCredit key={cast.id} credit={cast} />
             ))}

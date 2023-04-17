@@ -7,7 +7,7 @@ interface Props {
   shows?: (Movie | Tv)[];
 }
 
-const ShowsList = ({shows}: {shows?: (Movie | Tv)[]}) => {
+const ShowsList = ({ shows }: { shows?: (Movie | Tv)[] }) => {
   const router = useRouter();
   const { query } = router.query;
 
@@ -15,7 +15,7 @@ const ShowsList = ({shows}: {shows?: (Movie | Tv)[]}) => {
 
   if (shows === undefined) {
     return (
-      <div className="flex items-center justify-center h-[300px]">
+      <div className='flex h-[300px] items-center justify-center'>
         <p>Cannot fetch list</p>
       </div>
     );
@@ -23,14 +23,14 @@ const ShowsList = ({shows}: {shows?: (Movie | Tv)[]}) => {
 
   if (shows.length <= 0) {
     return (
-      <div className="flex items-center justify-center h-[300px]">
+      <div className='flex h-[300px] items-center justify-center'>
         <p>Cannot found result</p>
       </div>
-    )
+    );
   }
 
   return (
-    <div className="w-full py-4 md:py-6 grid grid-cols-[repeat(auto-fit,minmax(0,150px))] md:grid-cols-[repeat(auto-fit,minmax(0,180px))] place-items-center gap-4 justify-center place-content-start">
+    <div className='grid w-full grid-cols-[repeat(auto-fit,minmax(0,150px))] place-content-start place-items-center justify-center gap-4 py-4 md:grid-cols-[repeat(auto-fit,minmax(0,180px))] md:py-6'>
       {shows.map((show) => (
         <CardShow key={show.id} show={toShow(show)} />
       ))}
@@ -39,10 +39,10 @@ const ShowsList = ({shows}: {shows?: (Movie | Tv)[]}) => {
 };
 
 const ShowsSection = ({ shows }: Props) => {
-  const aww = (<div></div>)
+  const aww = <div></div>;
 
   return (
-    <section className="">
+    <section className=''>
       {/* css backup : py-4 md:py-6 grid md:max-xl:place-content-center gap-x-2 gap-y-2 place-content-center sm:place-content-start
        md:grid-cols-[repeat(auto-fit,minmax(0,180px))] grid-cols-[repeat(auto-fit,minmax(0,150px))]
        w-fit py-4 md:py-6 grid min-[370px]:grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-5 xl:grid-cols-6 2xl:grid-cols-7 place-items-center gap-4 place-content-start
