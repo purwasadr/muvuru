@@ -1,14 +1,10 @@
-import { getSearchMovies } from '@/api/movie';
-import { getSearchTv } from '@/api/tv';
 import { Movie, ResponseList, Tv } from '@/types';
 import { GetServerSideProps, InferGetStaticPropsType } from 'next';
 
-export default function Search({}:InferGetStaticPropsType<typeof getServerSideProps>) {
-  return (
-    <div>
-      Enter
-    </div>
-  );
+export default function Search({}: InferGetStaticPropsType<
+  typeof getServerSideProps
+>) {
+  return <div>Enter</div>;
 }
 
 interface GSSProps {
@@ -16,15 +12,11 @@ interface GSSProps {
 }
 
 export const getServerSideProps: GetServerSideProps<GSSProps> = async (ctx) => {
-
-
   return {
-    props: {
-      
-    }
+    props: {},
     // redirect: {
     //   destination: '/search/movie',
     //   permanent: true,
     // },
-  }
-}
+  };
+};

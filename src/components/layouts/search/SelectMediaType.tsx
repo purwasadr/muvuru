@@ -2,10 +2,9 @@ import { Overlay } from '@/components/ui/Overlay';
 import { ShowSorting } from '@/constants';
 import { cn } from '@/utils';
 import * as SelectPrimitive from '@radix-ui/react-select';
-import { Check, ChevronDown, ChevronUp } from 'lucide-react';
-import React, { useEffect, useState } from 'react';
+import { ChevronDown, ChevronUp } from 'lucide-react';
+import React, { useState } from 'react';
 import { twMerge } from 'tailwind-merge';
-
 
 export interface SelectItem extends ShowSorting {}
 
@@ -32,27 +31,27 @@ const SelectMediaType = ({
     >
       <SelectPrimitive.Trigger
         className={cn(
-          'flex items-center text-sm rounded-full pl-4 gap-1 bg-transparent outline-none',
+          'flex items-center gap-1 rounded-full bg-transparent pl-4 text-sm outline-none',
           className
         )}
-        aria-label="Type"
+        aria-label='Type'
       >
         <SelectPrimitive.Value />
-        <SelectPrimitive.Icon className="text-primary">
-          <ChevronDown className="h-[15px] w-[15px]" />
+        <SelectPrimitive.Icon className='text-primary'>
+          <ChevronDown className='h-[15px] w-[15px]' />
         </SelectPrimitive.Icon>
       </SelectPrimitive.Trigger>
       <SelectPrimitive.Portal>
         <>
           <Overlay open={open} />
           <SelectPrimitive.Content
-            position="popper"
-            className="z-50 overflow-hidden bg-slate-800 border-[1px] border-slate-700 rounded-md"
+            position='popper'
+            className='z-50 overflow-hidden rounded-md border-[1px] border-slate-700 bg-slate-800'
           >
-            <SelectPrimitive.ScrollUpButton className="flex items-center justify-center h-[25px] bg-slate-800 cursor-default">
+            <SelectPrimitive.ScrollUpButton className='flex h-[25px] cursor-default items-center justify-center bg-slate-800'>
               <ChevronUp />
             </SelectPrimitive.ScrollUpButton>
-            <SelectPrimitive.Viewport className="p-1">
+            <SelectPrimitive.Viewport className='p-1'>
               <SelectPrimitive.Group>
                 {items.map((item) => (
                   <SelectItem key={item.value} value={item.value}>
@@ -61,7 +60,7 @@ const SelectMediaType = ({
                 ))}
               </SelectPrimitive.Group>
             </SelectPrimitive.Viewport>
-            <SelectPrimitive.ScrollDownButton className="flex items-center justify-center h-[25px] bg-slate-800 text-white cursor-default">
+            <SelectPrimitive.ScrollDownButton className='flex h-[25px] cursor-default items-center justify-center bg-slate-800 text-white'>
               <ChevronDown />
             </SelectPrimitive.ScrollDownButton>
           </SelectPrimitive.Content>
@@ -78,7 +77,7 @@ const SelectItem = React.forwardRef<
   <SelectPrimitive.Item
     ref={ref}
     className={twMerge(
-      'relative text-sm text-primary rounded-md flex items-center py-2 pl-3 pr-8 select-none data-[disabled]:text-secondary data-[disabled]:pointer-events-none data-[highlighted]:outline-none data-[highlighted]:bg-slate-700',
+      'relative flex select-none items-center rounded-md py-2 pl-3 pr-8 text-sm text-primary data-[disabled]:pointer-events-none data-[highlighted]:bg-slate-700 data-[disabled]:text-secondary data-[highlighted]:outline-none',
       className
     )}
     {...props}

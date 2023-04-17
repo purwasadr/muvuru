@@ -3,10 +3,9 @@ import {
   SelectContent,
   SelectItem,
   SelectValue,
-  SelectTrigger,
 } from '@/components/ui/Select';
 import { cn } from '@/utils';
-import  * as SelectPrimitive from '@radix-ui/react-select';
+import * as SelectPrimitive from '@radix-ui/react-select';
 import { ChevronDown } from 'lucide-react';
 import { useState } from 'react';
 
@@ -33,15 +32,15 @@ const SelectFilter = ({
     >
       <SelectPrimitive.Trigger
         className={cn(
-          'flex items-center text-sm rounded px-3 h-[35px] gap-1 bg-red-700 hover:bg-red-800 outline-none',
+          'flex h-[35px] items-center gap-1 rounded bg-red-700 px-3 text-sm outline-none hover:bg-red-800',
           className
         )}
-        aria-label="Sort By"
+        aria-label='Sort By'
       >
         <SelectValue />
         <ChevronDown />
       </SelectPrimitive.Trigger>
-      <SelectContent open={open} position="popper">
+      <SelectContent open={open} position='popper'>
         {items.map((item) => (
           <SelectItem key={item.value} value={item.value}>
             {item.caption}

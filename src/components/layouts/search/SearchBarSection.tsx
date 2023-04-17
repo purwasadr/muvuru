@@ -1,5 +1,4 @@
 import SelectMediaType from '@/components/layouts/search/SelectMediaType';
-import Button from '@/components/ui/Button';
 import { Search } from 'lucide-react';
 import { useRouter } from 'next/router';
 import { searchMediaType } from '@/constants';
@@ -23,7 +22,7 @@ const SearchBarSection = ({ selectValue, className }: Props) => {
   };
 
   const handleSubmitSearch = (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
+    e.preventDefault();
     router.push({
       pathname: router.pathname,
       query: {
@@ -32,23 +31,26 @@ const SearchBarSection = ({ selectValue, className }: Props) => {
     });
   };
   return (
-    <section className={cn("",className)}>
-      <form onSubmit={(e) => handleSubmitSearch(e)} className='flex space-x-2.5 w-full items-center py-1 max-w-xl rounded-full bg-slate-700 mx-auto'>
+    <section className={cn('', className)}>
+      <form
+        onSubmit={(e) => handleSubmitSearch(e)}
+        className='mx-auto flex w-full max-w-xl items-center space-x-2.5 rounded-full bg-slate-700 py-1'
+      >
         <SelectMediaType
           defaultValue={'movie'}
           value={selectValue}
           items={searchMediaType}
           onValueChange={handleSelectChange}
         />
-        <div className="h-4 w-[1px] bg-slate-500"></div>
+        <div className='h-4 w-[1px] bg-slate-500'></div>
         <input
-          className="block w-full rounded-md bg-transparent shadow-sm border-none focus:border-none focus:ring-0 sm:text-sm px-0"
-          type="text"
+          className='block w-full rounded-md border-none bg-transparent px-0 shadow-sm focus:border-none focus:ring-0 sm:text-sm'
+          type='text'
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
         />
-        <div className="pr-4">
-          <Search className="h-[20px] w-[20px]" />
+        <div className='pr-4'>
+          <Search className='h-[20px] w-[20px]' />
         </div>
       </form>
     </section>

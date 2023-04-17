@@ -1,7 +1,6 @@
 import { SelectItem } from '@/components/ui/Select';
 import { MOVIEDB_IMAGE_URL } from '@/constants/env';
 import { Genre } from '@/types';
-import { StaticImageData } from 'next/image';
 
 interface NavLink {
   id: number;
@@ -43,26 +42,28 @@ interface SidebarLink {
   link: string;
 }
 
-export const sidebarLinks: SidebarLink[] = [{
-  id: 1,
-  caption: 'Home',
-  link: '/',
-},
-{
-  id: 2,
-  caption: 'Discover Movie',
-  link: '/movie-discover',
-},
-{
-  id: 3,
-  caption: 'Discover Tv',
-  link: '/tv-discover',
-},
-{
-  id: 4,
-  caption: 'Search',
-  link: '/search/movie',
-},]
+export const sidebarLinks: SidebarLink[] = [
+  {
+    id: 1,
+    caption: 'Home',
+    link: '/',
+  },
+  {
+    id: 2,
+    caption: 'Discover Movie',
+    link: '/movie-discover',
+  },
+  {
+    id: 3,
+    caption: 'Discover Tv',
+    link: '/tv-discover',
+  },
+  {
+    id: 4,
+    caption: 'Search',
+    link: '/search/movie',
+  },
+];
 
 export interface ShowSorting {
   id: number;
@@ -125,7 +126,6 @@ const getImageUrl = (w: number = 500, path: string) => {
   return `${MOVIEDB_IMAGE_URL}/t/p/w${w}${path}`;
 };
 
-
 export const movieGenre: Required<Genre>[] = [
   { id: 28, name: 'Action' },
   { id: 12, name: 'Adventure' },
@@ -149,17 +149,15 @@ export const movieGenre: Required<Genre>[] = [
 ];
 
 export const searchMediaType: SelectItem[] = [
-  
-    {
-      id: 1,
-      caption: 'Movie',
-      value: 'movie',
-    },
-    {
-      id: 2,
-      caption: 'Tv',
-      value: 'tv',
-    },
-  
-]
+  {
+    id: 1,
+    caption: 'Movie',
+    value: 'movie',
+  },
+  {
+    id: 2,
+    caption: 'Tv',
+    value: 'tv',
+  },
+];
 export { navLinks, showSorting, getImageUrl };

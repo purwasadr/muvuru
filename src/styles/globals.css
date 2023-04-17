@@ -4,37 +4,37 @@
 
 @layer base {
   h1 {
-    @apply text-3xl md:text-4xl font-semibold;
+    @apply text-3xl font-semibold md:text-4xl;
   }
 
   h2 {
-    @apply text-2xl md:text-3xl font-semibold;
+    @apply text-2xl font-semibold md:text-3xl;
   }
 
   h3 {
-    @apply text-lg md:text-xl font-semibold;
+    @apply text-lg font-semibold md:text-xl;
   }
 }
 
 @layer components {
   .pagination-break-link {
-    @apply hidden px-3 py-2 ml-0 leading-tight text-white bg-slate-800 border border-slate-700 hover:bg-gray-900;
+    @apply ml-0 hidden border border-slate-700 bg-slate-800 px-3 py-2 leading-tight text-white hover:bg-gray-900;
   }
 
   .pagination-page-link {
-    @apply px-3 py-2 text-white bg-slate-800 border border-slate-700 hover:bg-gray-900;
+    @apply border border-slate-700 bg-slate-800 px-3 py-2 text-white hover:bg-gray-900;
   }
 
   .pagination-active-link {
-    @apply px-3 py-2 text-white bg-red-700 hover:bg-red-800 ;
+    @apply bg-red-700 px-3 py-2 text-white hover:bg-red-800;
   }
 
   .pagination-previous-link {
-    @apply px-3 py-2 block text-white border rounded-l-lg border-slate-700 hover:bg-gray-900;
+    @apply block rounded-l-lg border border-slate-700 px-3 py-2 text-white hover:bg-gray-900;
   }
 
   .pagination-next-link {
-    @apply px-3 py-2 block text-white border rounded-r-lg border-slate-700 hover:bg-gray-900;
+    @apply block rounded-r-lg border border-slate-700 px-3 py-2 text-white hover:bg-gray-900;
   }
 
   .carousel-item-center {
@@ -51,7 +51,6 @@
 }
 
 @layer utilities {
-
   .page-width {
     @apply container px-6 md:px-10;
   }

@@ -10,12 +10,12 @@ function isString(str: any) {
   return typeof str === 'string' ? str : undefined;
 }
 
-export function getOrElse <T> (a: T, func: () => void) {
+export function getOrElse<T>(a: T, func: () => void) {
   if (a) {
-    return a
+    return a;
   }
-  func()
-} 
+  func();
+}
 
 export function toNumber(str?: string) {
   return str ? Number.parseInt(str) : undefined;
@@ -26,10 +26,10 @@ export function minuteToText(totalMinutes?: number) {
     return undefined;
   }
 
-  const hours = Math.floor(totalMinutes / 60);          
+  const hours = Math.floor(totalMinutes / 60);
   const minutes = totalMinutes % 60;
 
-  return (hours > 0) ? `${hours}h ${minutes}m` : `${minutes}m` 
+  return hours > 0 ? `${hours}h ${minutes}m` : `${minutes}m`;
 }
 
 export function getMovieGenre(id: number) {
@@ -37,7 +37,7 @@ export function getMovieGenre(id: number) {
 }
 
 export function getMovieGenreFromIds(genres?: number[]) {
-  if(!genres) return undefined
+  if (!genres) return undefined;
 
   const result = genres?.map((id) => getMovieGenre(id)?.name ?? '');
 
@@ -52,9 +52,9 @@ export function arrayToString(arr: string[] | undefined) {
     if (index === 0) {
       txt = value;
     } else if (index === arr.length - 1) {
-      txt = txt + ', and ' + value
+      txt = txt + ', and ' + value;
     } else {
-      txt = `${txt}, ${value}`
+      txt = `${txt}, ${value}`;
     }
   });
   return txt;
@@ -66,10 +66,10 @@ export const getDateShort = (dateString?: string) => {
   const date = new Date(dateString);
 
   return date.toLocaleDateString('id-ID', {
-      day: 'numeric',
-      month: 'short',
-      year: 'numeric',
-      formatMatcher: 'basic'
+    day: 'numeric',
+    month: 'short',
+    year: 'numeric',
+    formatMatcher: 'basic',
   });
 };
 

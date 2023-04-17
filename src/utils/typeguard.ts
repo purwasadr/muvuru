@@ -22,7 +22,8 @@ function isTvDetail(show: MovieDetail | TvDetail): show is TvDetail {
 
 function isMovieDetail(show: MovieDetail | TvDetail): show is MovieDetail {
   return (
-    (show as TvDetail).name === undefined && (show as Tv).original_name === undefined
+    (show as TvDetail).name === undefined &&
+    (show as Tv).original_name === undefined
   );
 }
 export { isMovie, isTv, isTvDetail, isMovieDetail };

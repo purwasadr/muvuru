@@ -1,4 +1,3 @@
-
 interface Props extends React.ComponentProps<'svg'> {
   radiusComp: number;
   strokeComp: number;
@@ -18,10 +17,10 @@ const ProgressRing = ({
   const strokeDashoffset = circumference - (progress / 100) * circumference;
 
   return (
-    <svg height={radiusComp * 2} width={radiusComp * 2}  {...props}>
+    <svg height={radiusComp * 2} width={radiusComp * 2} {...props}>
       <circle
         stroke='#6b7280'
-        fill="transparent"
+        fill='transparent'
         strokeLinecap='round'
         strokeWidth={strokeComp}
         strokeDasharray={circumference + ' ' + circumference}
@@ -34,7 +33,7 @@ const ProgressRing = ({
 
       <circle
         // stroke={strokeColor}
-        fill="transparent"
+        fill='transparent'
         strokeLinecap='round'
         strokeWidth={strokeComp}
         strokeDasharray={circumference + ' ' + circumference}
@@ -44,7 +43,6 @@ const ProgressRing = ({
         cx={radiusComp}
         cy={radiusComp}
       />
-
     </svg>
   );
 };
