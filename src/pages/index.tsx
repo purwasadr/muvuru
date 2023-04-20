@@ -5,13 +5,13 @@ import TopMoviesSection from '@/components/layouts/home/TrendingSection';
 import { UpcomingSection } from '@/components/layouts/home/UpcomingSection';
 import { Movie, Show } from '@/types';
 import { getOnFulfilled } from '@/utils';
-import { GetServerSideProps, InferGetServerSidePropsType } from 'next';
+import { GetStaticProps, InferGetStaticPropsType } from 'next';
 
 export default function Home({
   trending,
   popularMovies,
   upcomingMovies,
-}: InferGetServerSidePropsType<typeof getServerSideProps>) {
+}: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <div className={`[&>*]:mx-auto`}>
       <HeroSection popularMovies={popularMovies} />
@@ -23,11 +23,12 @@ export default function Home({
   );
 }
 
-export const getServerSideProps: GetServerSideProps<{
+export const getStaticProps: GetStaticProps<{
   trending?: Show[];
   popularMovies?: Movie[];
   upcomingMovies?: Movie[];
-}> = async (ctx) => {
+}> = async () => {
+
   const [trending, popularMovies, upcomingMovies] = await Promise.allSettled([
     getTrending(),
     getPopularMovies(),
@@ -54,7 +55,6 @@ export const getServerSideProps: GetServerSideProps<{
   }
 
   const upcomingMoviesRes = getOnFulfilled(upcomingMovies)?.results;
-
   if (upcomingMoviesRes) {
     props = {
       ...props,
@@ -64,5 +64,6 @@ export const getServerSideProps: GetServerSideProps<{
 
   return {
     props,
+    revalidate: 1800
   };
-};
+}

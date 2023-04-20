@@ -24,7 +24,7 @@ const SortAndFilterSection = ({ prefixPath }: Props) => {
 
   return (
     <section className='py-4'>
-      <div className='s'>
+      <div className=''>
         <label className='block'>Sort By</label>
         <SelectFilter
           className='mt-2'

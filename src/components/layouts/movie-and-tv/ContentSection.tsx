@@ -37,6 +37,8 @@ const ContentSection = ({ showDetail, showCredit }: Props) => {
     last_air_date,
     number_of_episodes,
     number_of_seasons,
+    media_type,
+    original_title
   } = showDetail;
 
   return (
@@ -58,12 +60,12 @@ const ContentSection = ({ showDetail, showCredit }: Props) => {
         )}
       </div>
       {/* Child section */}
-      <div className='mt-10 flex-1 md:mt-[55px]'>
-        <h1>{showDetail.title}</h1>
+      <div className='mt-8 flex-1 md:mt-[55px] leading-'>
+        <h1>{title}</h1>
         <p className='mt-2 text-secondary'>
-          Original title : {showDetail.original_title || '-'}
+          Original title : {original_title || '-'}
         </p>
-        {showDetail.media_type === 'movie' ? (
+        {media_type === 'movie' ? (
           <div className='mt-2 flex space-x-2'>
             <p>{getDateShort(showDetail.release_date?.toString())}</p>
             <p>•</p>
@@ -106,7 +108,7 @@ const ContentSection = ({ showDetail, showCredit }: Props) => {
         <p className='mt-5 leading-relaxed text-secondary'>
           {showDetail.overview}
         </p>
-        <DetailsSection showDetail={showDetail} />
+        <DetailsSection className="mt-8" showDetail={showDetail} />
       </div>
       {/* Child section */}
       <CastAndCrewSection
