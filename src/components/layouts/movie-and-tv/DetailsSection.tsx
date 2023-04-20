@@ -1,20 +1,21 @@
 import { ShowDetail } from '@/types';
-import { arrayToString } from '@/utils';
+import { arrayToString, cn } from '@/utils';
 
 interface Props {
   showDetail: Pick<
     ShowDetail,
     'genres' | 'spoken_languages' | 'status' | 'revenue'
   >;
+  className: string;
 }
 
-const DetailsSection = ({ showDetail }: Props) => {
+const DetailsSection = ({ showDetail, className }: Props) => {
   const { genres, spoken_languages, status, revenue } = showDetail;
 
   return (
-    <div className='mt-8'>
+    <div className={cn(className)}>
       <h2>Details</h2>
-      <table className='mt-5 w-full max-w-[600px] table-auto text-left '>
+      <table className='mt-4 w-full max-w-[600px] table-auto text-left '>
         <colgroup>
           <col className='w-[45%] md:w-[35%]' />
           <col className='w-[55%] md:w-[65%]' />
