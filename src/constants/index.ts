@@ -160,4 +160,46 @@ export const searchMediaType: SelectItem[] = [
     value: 'tv',
   },
 ];
+
+interface FooterLinkGroup {
+  id: number;
+  name: string;
+  links: FooterLink[];
+}
+
+interface FooterLink {
+  id: number;
+  caption: string;
+  link: string;
+}
+
+export const footerLinks: FooterLinkGroup[] = [
+  {
+    id: 1,
+    name: "Pages",
+    links: [
+      {
+        id: 1,
+        caption: 'Home',
+        link: '/home'
+      },
+      {
+        id: 2,
+        caption: 'Discover Movies',
+        link: '/movie-discover'
+      },
+      {
+        id: 3,
+        caption: 'Discover Tv Show',
+        link: '/tv-discover'
+      },
+      {
+        id: 4,
+        caption: 'Search',
+        link: '/search/movie'
+      }
+    ]
+  }
+]
+
 export { navLinks, showSorting, getImageUrl };
