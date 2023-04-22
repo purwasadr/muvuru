@@ -34,12 +34,12 @@ const Navbar = () => {
         RemoveScroll.classNames.fullWidth
       } ${isNavBgDark ? 'bg-slate-900/50 backdrop-blur' : 'bg-transparent'}`}
     >
-      <div className='page-padding-x container flex w-full items-center justify-between py-5'>
-        <p className='cursor-pointer text-xl font-medium uppercase text-white'>
+      <div className="page-padding-x container flex w-full items-center justify-between py-4">
+        <p className="cursor-pointer text-xl font-medium uppercase text-white">
           Muvuru
         </p>
-        <div className='max-md:hidden'>
-          <li className='flex space-x-7'>
+        <div className="max-md:hidden">
+          <li className="flex space-x-7">
             {navLinks.map((item) => (
               <ul key={item.id}>
                 {item.links ? (
@@ -51,7 +51,7 @@ const Navbar = () => {
                 ) : (
                   <Link
                     href={item.link ?? '#'}
-                    className='text-white hover:text-primary'
+                    className="text-white hover:text-primary"
                   >
                     {item.caption}
                   </Link>
@@ -60,7 +60,7 @@ const Navbar = () => {
             ))}
           </li>
         </div>
-        <div className='flex items-center md:hidden'>
+        <div className="flex items-center md:hidden">
           <Sidebar />
         </div>
       </div>

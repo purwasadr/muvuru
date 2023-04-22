@@ -20,7 +20,7 @@ const CardCredit = ({ credit: { profile_path, name, character } }: Props) => {
         />
       ) : (
         <div className='flex h-[55px] w-[55px] items-center justify-center rounded-full bg-slate-400'>
-          <User className='h-[40%] w-[40%]' />
+          <User className='h-[56%] w-[56%]' />
         </div>
       )}
       <div className='flex flex-1 flex-col justify-center space-y-1'>

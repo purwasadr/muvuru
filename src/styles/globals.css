@@ -4,15 +4,15 @@
 
 @layer base {
   h1 {
-    @apply text-2xl font-semibold md:text-4xl;
+    @apply text-3xl font-semibold md:text-4xl;
   }
 
   h2 {
-    @apply text-xl font-semibold md:text-3xl;
+    @apply text-2xl font-semibold md:text-3xl;
   }
 
   h3 {
-    @apply text-base font-semibold md:text-xl;
+    @apply text-lg font-semibold md:text-xl;
   }
 
   body {
@@ -26,11 +26,11 @@
   }
 
   .pagination-page-link {
-    @apply border border-slate-700 bg-slate-800 px-3 py-2 text-white hover:bg-gray-900;
+    @apply border border-slate-700 bg-slate-800 px-3 py-2 text-white text-base hover:bg-gray-900;
   }
 
   .pagination-active-link {
-    @apply bg-red-700 px-3 py-2 text-white hover:bg-red-800;
+    @apply bg-red-700 px-3 py-2 text-white hover:bg-red-800 text-base;
   }
 
   .pagination-previous-link {

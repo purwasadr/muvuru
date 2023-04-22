@@ -30,7 +30,7 @@ const Sidebar = () => {
               />
             </Dialog.Overlay>
             <Dialog.Content
-              className='fixed inset-y-0 right-0 z-50 w-[90vw] max-w-[180px] rounded-l-lg bg-slate-900/70 p-5 backdrop-blur focus:outline-none sm:p-6'
+              className='fixed inset-y-0 right-0 z-50 w-[90vw] max-w-[160px] md:max-w-[180px] rounded-l-lg bg-slate-900/70 p-5 backdrop-blur focus:outline-none sm:p-6'
               asChild
               forceMount
             >
