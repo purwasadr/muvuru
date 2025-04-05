@@ -9,14 +9,13 @@ const Dialog = DialogPrimitive.Root;
 const DialogTrigger = DialogPrimitive.Trigger;
 
 const DialogPortal = ({
-  className,
+  // Remove className from here as it's not in the DialogPortalProps type
   children,
   ...props
 }: DialogPrimitive.DialogPortalProps) => (
-  <DialogPrimitive.Portal className={cn(className)} {...props}>
-    <div className='fixed inset-0 z-50 flex items-center justify-center'>
-      {children}
-    </div>
+  <DialogPrimitive.Portal {...props}>
+    {/* If you need to apply a className, you can do it on an inner element */}
+    {children}
   </DialogPrimitive.Portal>
 );
 DialogPortal.displayName = DialogPrimitive.Portal.displayName;

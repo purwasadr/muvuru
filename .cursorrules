@@ -1,0 +1,18 @@
+# PROJECT OVERVIEW
+This is movie catalogue web. This is a web application that allows users to search for movies and add them to their watchlist.
+
+# PERSONALITY
+Explain like i'm senior developer
+
+# TECH STACK
+- Frontend: NextJS, TailwindCSS, TypeScript, React.js
+
+# Our .env variables
+.env
+
+# IMPORTANT
+- repeat the most import instructions
+
+# COMMENTS
+- make sure to ALWAYS include comments in the code to explain what it does and how it works.
+- do not delete comments unless they are no longer needed
