@@ -6,6 +6,7 @@ import Head from 'next/head';
 import 'react-multi-carousel/lib/styles.css';
 import 'swiper/css';
 import 'swiper/css/pagination';
+import 'swiper/css/autoplay';
 
 export default function App({ Component, pageProps }: AppProps) {
   return (

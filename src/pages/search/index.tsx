@@ -1,9 +1,9 @@
 import { Movie, ResponseList, Tv } from '@/types';
-import { GetServerSideProps, InferGetStaticPropsType } from 'next';
+import { GetServerSideProps, InferGetServerSidePropsType } from 'next';
 
-export default function Search({}: InferGetStaticPropsType<
-  typeof getServerSideProps
->) {
+export default function Search(
+  _props: InferGetServerSidePropsType<typeof getServerSideProps>
+) {
   return <div>Enter</div>;
 }
 
@@ -11,7 +11,7 @@ interface GSSProps {
   show?: ResponseList<Movie | Tv>;
 }
 
-export const getServerSideProps: GetServerSideProps<GSSProps> = async (ctx) => {
+export const getServerSideProps: GetServerSideProps<GSSProps> = async (_ctx) => {
   return {
     props: {},
     // redirect: {

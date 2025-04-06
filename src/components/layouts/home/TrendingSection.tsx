@@ -1,27 +1,53 @@
 import CardShow from '@/components/ui/CardShow';
 import ImageButton from '@/components/ui/ImageButton';
 import { Show } from '@/types';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Autoplay, Swiper as SwiperOri } from 'swiper';
+import { Autoplay } from 'swiper/modules';
+import type { Swiper as SwiperType } from 'swiper';
 
 interface Props {
   trending?: Show[];
 }
 
 const TopMoviesSection = ({ trending }: Props) => {
-  const [swiper, setSwiper] = useState<SwiperOri>();
+  const [swiper, setSwiper] = useState<SwiperType>();
 
   return (
     <section className='relative z-30'>
       <h2 className='text-center'>Trending</h2>
       <div className='mt-12 flex justify-end space-x-2'>
         <ImageButton onClick={() => swiper?.slidePrev()}>
-          <ChevronLeft className='h-5 w-5' />
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            className="h-5 w-5"
+          >
+            <path d="m15 18-6-6 6-6" />
+          </svg>
         </ImageButton>
         <ImageButton onClick={() => swiper?.slideNext()}>
-          <ChevronRight className='h-5 w-5' />
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            className="h-5 w-5"
+          >
+            <path d="m9 18 6-6-6-6" />
+          </svg>
         </ImageButton>
       </div>
       {trending ? (

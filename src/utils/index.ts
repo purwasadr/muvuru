@@ -6,7 +6,7 @@ const getOnFulfilled = <T>(pro: PromiseSettledResult<T>) => {
   return pro.status === 'fulfilled' ? pro.value : undefined;
 };
 
-function isString(str: any) {
+function isString(str: unknown): string | undefined {
   return typeof str === 'string' ? str : undefined;
 }
 
